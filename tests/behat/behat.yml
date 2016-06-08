@@ -1,0 +1,54 @@
+default:
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: http://localhost/
+            goutte: ~
+            selenium2:
+              browser:              'chrome'
+              capabilities:         { "browserName": "chrome", "browser": "chrome"}
+              wd_host:              'http://127.0.0.1:8643/wd/hub'
+            browser_name: 'chrome'
+            files_path: 'tests/behat/files/'
+        Drupal\DrupalExtension\Extension:
+            blackbox: ~
+            text:
+                log_out: "Log out"
+                log_in: "Log in"
+                password_field: "Password"
+                username_field: "Username"
+            selectors:
+                logged_in_selector: "body.logged-in"
+                login_form_selector: "form#user-login"
+            api_driver: 'drush'
+            drush:
+#            Requires Customization
+#             alias: ''
+              root: '/vagrant/public'
+local-selenium:
+    extensions:
+        Behat\MinkExtension\Extension:
+            # The url for accessing the guest vm from the host
+            base_url: http://localhost:8081/
+            goutte: ~
+            selenium2:
+              browser:              'firefox'
+              capabilities:         { "browserName": "firefox", "browser": "firefox"}
+              # The url for accessing the guest vm selenium process from the guest VM
+              wd_host:              'http://10.11.12.1:5555/wd/hub'
+            browser_name: 'chrome'
+            files_path: 'tests/behat/files/'
+        Drupal\DrupalExtension\Extension:
+            blackbox: ~
+            text:
+                log_out: "Log out"
+                log_in: "Log in"
+                password_field: "Password"
+                username_field: "Username"
+            selectors:
+                logged_in_selector: "body.logged-in"
+                login_form_selector: "form#user-login"
+            api_driver: 'drush'
+            drush:
+#            Requires Customization
+#             alias: ''
+              root: '/vagrant/public'
