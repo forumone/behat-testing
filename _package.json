@@ -1,0 +1,20 @@
+{
+  "name": "{{name}}",
+  "version": "{{version}}",
+  {{#repository}}
+  "repository": {
+    "type": "git",
+    "url": "{{repository}}"
+  },
+  {{/repository}}
+  {{#use_compass}}
+  {{#is_drupal}}
+  "themePath": "{{app_webroot}}/sites/all/themes/{{drupal_theme}}",
+  {{/is_drupal}}
+  {{#is_wordpress}}
+  "themePath": "{{app_webroot}}/wp-content/themes/{{wordpress_theme}}",
+  {{/is_wordpress}}
+  {{/use_compass}}
+  "devDependencies": {
+  }
+}
