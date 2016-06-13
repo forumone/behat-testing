@@ -1,0 +1,14 @@
+{
+  /* Same as: --ignore-ssl-errors=true */
+  "ignoreSslErrors": true,
+  /* Same as: --max-disk-cache-size=1000 */
+  "maxDiskCacheSize": 1000,
+  /* Same as: --output-encoding=utf8 */
+  "outputEncoding": "utf8",
+  "webdriver": 8643,
+  "viewportSize": {
+    "height": 800,
+    "width": 600
+  },
+  "autoLoadImages": false
+}
