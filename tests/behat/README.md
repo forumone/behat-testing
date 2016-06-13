@@ -19,6 +19,7 @@ Once Web Starter has been provisioned and you have created your Drupal site with
 
 ```
 $ vagrant ssh
+$ cd /vagrant/tests/behat
 $ bin/behat features/test.feature  -p local-selenium
 ```
 
@@ -154,6 +155,7 @@ Web Starter by default comes with two behat-grunt tasks:
 
  ```
  $ vagrant ssh
+ $ cd /vagrant/tests/behat
  $ bin/behat features/test-js.feature  -p local-selenium
  ```
 
