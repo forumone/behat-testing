@@ -80,12 +80,7 @@ Set up tests
      :language: yaml 
      :linenos:
 
-3. Initialize behat. This creates the features folder with some basic things to
-   get you started::
-
-    bin/behat --init
-
-4. This will generate a FeatureContext.php file that looks like:
+3. This will generate a FeatureContext.php file that looks like:
 
   .. literalinclude:: _static/snippets/FeatureContext.php.inc
      :language: php 
@@ -94,15 +89,9 @@ Set up tests
 
   This will make your FeatureContext.php aware of both the Drupal Extension and
   the Mink Extension, so you'll be able to take advantage of their drivers and
-  step definitions and add your own custom step definitions here. 
-  The FeatureContext.php file must be in the same directory as your behat.yml
-  file otherwise in step 5 you will get the following error:
-  
-    [Behat\Behat\Context\Exception\ContextNotFoundException]
-    `FeatureContext` context class not found and can not be used. 
-  
+  step definitions and add your own custom step definitions here.
 
-5. To ensure everything is set up appropriately, type::
+4. To ensure everything is set up appropriately, type::
 
     behat -dl
 

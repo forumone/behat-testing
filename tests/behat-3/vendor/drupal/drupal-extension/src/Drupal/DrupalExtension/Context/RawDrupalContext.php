@@ -7,12 +7,10 @@ use Behat\Testwork\Hook\HookDispatcher;
 
 use Drupal\DrupalDriverManager;
 
-use Drupal\DrupalExtension\Hook\Scope\AfterLanguageEnableScope;
 use Drupal\DrupalExtension\Hook\Scope\AfterNodeCreateScope;
 use Drupal\DrupalExtension\Hook\Scope\AfterTermCreateScope;
 use Drupal\DrupalExtension\Hook\Scope\AfterUserCreateScope;
 use Drupal\DrupalExtension\Hook\Scope\BaseEntityScope;
-use Drupal\DrupalExtension\Hook\Scope\BeforeLanguageEnableScope;
 use Drupal\DrupalExtension\Hook\Scope\BeforeNodeCreateScope;
 use Drupal\DrupalExtension\Hook\Scope\BeforeUserCreateScope;
 use Drupal\DrupalExtension\Hook\Scope\BeforeTermCreateScope;
@@ -80,13 +78,6 @@ class RawDrupalContext extends RawMinkContext implements DrupalAwareInterface {
    * @var array
    */
   protected $roles = array();
-
-  /**
-   * Keep track of any languages that are created so they can easily be removed.
-   *
-   * @var array
-   */
-  protected $languages = array();
 
   /**
    * {@inheritDoc}
@@ -230,28 +221,6 @@ class RawDrupalContext extends RawMinkContext implements DrupalAwareInterface {
   }
 
   /**
-   * Remove any created languages.
-   *
-   * @AfterScenario
-   */
-  public function cleanLanguages() {
-    // Delete any languages that were created.
-    foreach ($this->languages as $language) {
-      $this->getDriver()->languageDelete($language);
-      unset($this->languages[$language->langcode]);
-    }
-  }
-
-  /**
-   * Clear static caches.
-   *
-   * @AfterScenario @api
-   */
-  public function clearStaticCaches() {
-    $this->getDriver()->clearStaticCaches();
-  }
-
-  /**
    * Dispatch scope hooks.
    *
    * @param string $scope
@@ -293,76 +262,20 @@ class RawDrupalContext extends RawMinkContext implements DrupalAwareInterface {
    *    A, B, C
    *    A - B, C - D, E - F
    *
-   * @param string $entity_type
-   *   The entity type.
-   * @param \stdClass $entity
-   *   An object containing the entity properties and fields as properties.
+   * @param $entity_type
+   * @param $entity
    */
-  public function parseEntityFields($entity_type, \stdClass $entity) {
-    $multicolumn_field = '';
-    $multicolumn_fields = array();
-
-    foreach (clone $entity as $field => $field_value) {
-      // Reset the multicolumn field if the field name does not contain a column.
-      if (strpos($field, ':') === FALSE) {
-        $multicolumn_field = '';
-      }
-      // Start tracking a new multicolumn field if the field name contains a ':'
-      // which is preceded by at least 1 character.
-      elseif (strpos($field, ':', 1) !== FALSE) {
-        list($multicolumn_field, $multicolumn_column) = explode(':', $field);
-      }
-      // If a field name starts with a ':' but we are not yet tracking a
-      // multicolumn field we don't know to which field this belongs.
-      elseif (empty($multicolumn_field)) {
-        throw new \Exception('Field name missing for ' . $field);
-      }
-      // Update the column name if the field name starts with a ':' and we are
-      // already tracking a multicolumn field.
-      else {
-        $multicolumn_column = substr($field, 1);
-      }
-
-      $is_multicolumn = $multicolumn_field && $multicolumn_column;
-      $field_name = $multicolumn_field ?: $field;
+  public function parseEntityFields($entity_type, $entity) {
+    foreach ($entity as $field_name => $value) {
       if ($this->getDriver()->isField($entity_type, $field_name)) {
-        // Split up multiple values in multi-value fields.
-        $values = array();
-        foreach (explode(', ', $field_value) as $key => $value) {
-          $columns = $value;
-          // Split up field columns if the ' - ' separator is present.
+        $values = explode(', ', $value);
+        foreach ($values as $key => $value) {
           if (strstr($value, ' - ') !== FALSE) {
-            $columns = array();
-            foreach (explode(' - ', $value) as $column) {
-              // Check if it is an inline named column.
-              if (!$is_multicolumn && strpos($column, ': ', 1) !== FALSE) {
-                list ($key, $column) = explode(': ', $column);
-                $columns[$key] = $column;
-              }
-              else {
-                $columns[] = $column;
-              }
-            }
-          }
-          // Use the column name if we are tracking a multicolumn field.
-          if ($is_multicolumn) {
-            $multicolumn_fields[$multicolumn_field][$key][$multicolumn_column] = $columns;
-            unset($entity->$field);
-          }
-          else {
-            $values[] = $columns;
+            $values[$key] = explode(' - ', $value);
           }
         }
-        // Replace regular fields inline in the entity after parsing.
-        if (!$is_multicolumn) {
-          $entity->$field_name = $values;
-        }
+        $entity->$field_name = $values;
       }
-    }
-
-    // Add the multicolumn fields to the entity.
-    foreach ($multicolumn_fields as $field_name => $columns) {
-      $entity->$field_name = $columns;
     }
   }
 
@@ -394,26 +307,6 @@ class RawDrupalContext extends RawMinkContext implements DrupalAwareInterface {
     $this->dispatchHooks('AfterTermCreateScope', $saved);
     $this->terms[] = $saved;
     return $saved;
-  }
-
-  /**
-   * Creates a language.
-   *
-   * @param \stdClass $language
-   *   An object with the following properties:
-   *   - langcode: the langcode of the language to create.
-   *
-   * @return object|FALSE
-   *   The created language, or FALSE if the language was already created.
-   */
-  public function languageCreate(\stdClass $language) {
-    $this->dispatchHooks('BeforeLanguageCreateScope', $language);
-    $language = $this->getDriver()->languageCreate($language);
-    if ($language) {
-      $this->dispatchHooks('AfterLanguageCreateScope', $language);
-      $this->languages[$language->langcode] = $language;
-    }
-    return $language;
   }
 
   /**

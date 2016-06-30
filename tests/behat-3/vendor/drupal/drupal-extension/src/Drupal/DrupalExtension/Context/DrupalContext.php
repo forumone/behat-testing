@@ -36,7 +36,6 @@ class DrupalContext extends RawDrupalContext implements TranslatableContext {
    * Creates and authenticates a user with the given role(s).
    *
    * @Given I am logged in as a user with the :role role(s)
-   * @Given I am logged in as a/an :role
    */
   public function assertAuthenticatedByRole($role) {
     // Check if a user with this role is already logged in.
@@ -189,9 +188,9 @@ class DrupalContext extends RawDrupalContext implements TranslatableContext {
    */
   public function assertClickInTableRow($link, $rowText) {
     $page = $this->getSession()->getPage();
-    if ($link_element = $this->getTableRow($page, $rowText)->findLink($link)) {
+    if ($link = $this->getTableRow($page, $rowText)->findLink($link)) {
       // Click the link and return.
-      $link_element->click();
+      $link->click();
       return;
     }
     throw new \Exception(sprintf('Found a row containing "%s", but no "%s" link on the page %s', $rowText, $link, $this->getSession()->getCurrentUrl()));
@@ -372,29 +371,6 @@ class DrupalContext extends RawDrupalContext implements TranslatableContext {
       $term = (object) $termsHash;
       $term->vocabulary_machine_name = $vocabulary;
       $this->termCreate($term);
-    }
-  }
-
-  /**
-   * Creates one or more languages.
-   *
-   * @Given the/these (following )languages are available:
-   *
-   * Provide language data in the following format:
-   *
-   * | langcode |
-   * | en       |
-   * | fr       |
-   *
-   * @param TableNode $langcodesTable
-   *   The table listing languages by their ISO code.
-   */
-  public function createLanguages(TableNode $langcodesTable) {
-    foreach ($langcodesTable->getHash() as $row) {
-      $language = (object) array(
-        'langcode' => $row['languages'],
-      );
-      $this->languageCreate($language);
     }
   }
 

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\Tests\Driver\DrushDriverTest.
+ */
+
 namespace Drupal\Tests\Driver;
 
 use Drupal\Driver\DrushDriver;

@@ -301,20 +301,6 @@ class DrupalDriver implements DriverInterface, SubDriverFinderInterface {
   /**
    * {@inheritdoc}
    */
-  public function configGet($name, $key) {
-    return $this->getCore()->configGet($name, $key);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function configSet($name, $key, $value) {
-    $this->getCore()->configSet($name, $key, $value);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function clearStaticCaches() {
     $this->getCore()->clearStaticCaches();
   }

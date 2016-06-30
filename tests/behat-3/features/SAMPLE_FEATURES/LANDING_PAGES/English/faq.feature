@@ -1,4 +1,5 @@
 Feature: I want to test the 'faq' page
+
     @javascript @anon
     Scenario: As an anonymous user I want to make sure that the faq page works properly
         Given I visit "/frequently-asked-questions"

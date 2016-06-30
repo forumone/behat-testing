@@ -3,7 +3,6 @@ status: true
 dependencies:
   config:
     - field.field.node.post.body
-    - field.field.node.post.field_post_address
     - field.field.node.post.field_post_date
     - field.field.node.post.field_post_links
     - field.field.node.post.field_post_reference
@@ -22,8 +21,6 @@ mode: default
 content:
   links:
     weight: 100
-    settings: {  }
-    third_party_settings: {  }
   body:
     label: hidden
     type: text_default
@@ -37,20 +34,13 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
-  field_post_address:
-    weight: 107
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: behat_test_address_field
   field_post_date:
     weight: 103
     label: above
     settings:
-      timezone_override: ''
-      date_format: 'l, F j, Y'
+      format_type: medium
     third_party_settings: {  }
-    type: datetime_custom
+    type: datetime_default
   field_post_select:
     weight: 105
     label: above
@@ -68,4 +58,5 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
-hidden: {  }
+hidden:
+  field_post_dates: true

@@ -30,9 +30,9 @@ default:
             selectors:
                 logged_in_selector: "body.logged-in"
                 login_form_selector: "form#user-login"
-            api_driver: 'drush'
-            drush:
-              root: '/vagrant/public'
+            api_driver: 'drupal'
+            drupal:
+              drupal_root: '/vagrant/public'
 local-phantomjs:
     formatters:
         pretty: true
@@ -65,9 +65,9 @@ local-phantomjs:
             selectors:
                 logged_in_selector: "body.logged-in"
                 login_form_selector: "form#user-login"
-            api_driver: 'drush'
+            api_driver: 'drupal'
             drush:
-              alias: 'dai-usaid.local'
+#              alias: 'dai-usaid.local'
               root: '/vagrant/public'
 local-selenium:
     formatters:

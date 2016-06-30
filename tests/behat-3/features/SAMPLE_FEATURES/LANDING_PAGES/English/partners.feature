@@ -1,5 +1,5 @@
 Feature: I want to test the 'partners' page
-    @javascript @anon
+    @anon
     Scenario: As an anonymous user I want to make sure that the partners page works properly
         Given I visit "/partners"
         Then I should see text matching "Exchange Partners"

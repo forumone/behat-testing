@@ -10,7 +10,7 @@ class GeneralTest extends BrowserTestCase
     /**
      * @var \Drupal\Driver\DriverInterface
      */
-     protected static $driver;
+    protected $driver;
 
     // Path to a Drupal install. This example assumes the directory is in the same one as the `composer.json` file.
     protected static $drupalRoot = './drupal';
@@ -28,10 +28,10 @@ class GeneralTest extends BrowserTestCase
         ),
     );
 
-     public static function setUpBeforeClass() {
-        self::$driver = new DrupalDriver(static::$drupalRoot, static::$uri);
-        self::$driver->setCoreFromVersion();
-        self::$driver->bootstrap();
+    public function setUp() {
+        $this->driver = new DrupalDriver(static::$drupalRoot, static::$uri);
+        $this->driver->setCoreFromVersion();
+        $this->driver->bootstrap();
     }
 
     public function testUsingSession()
@@ -56,12 +56,11 @@ class GeneralTest extends BrowserTestCase
     }
 
     public function testNodeCreate() {
-        $drupal = self::$driver;
         $node = (object) [
-            'title' => $drupal->getRandom()->string(),
+            'title' => $this->driver->getRandom()->string(),
             'type' => 'article',
         ];
-        $drupal->createNode($node);
+        $this->driver->createNode($node);
 
         $session = $this->getSession();
         $session->visit(static::$uri . '/node/' . $node->nid);
