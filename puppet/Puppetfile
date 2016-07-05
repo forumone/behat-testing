@@ -12,3 +12,6 @@ mod "arioch/percona",
 mod "forumone/forumone",
   :git => "https://github.com/generalconsensus/puppet-forumone.git",
   :ref => "Behat-3"
+mod "akquinet/archmngt",
+  :git => "https://github.com/akquinet/puppet-archmngt.git"
+  :ref => "master"
