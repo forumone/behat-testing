@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Behat Test Feature feature.
+ */
+
+include_once 'behat_test_feature.features.inc';

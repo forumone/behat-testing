@@ -12,3 +12,4 @@ mod "arioch/percona",
 mod "forumone/forumone",
   :git => "https://github.com/generalconsensus/puppet-forumone.git",
   :ref => "Behat-3"
+mod "3fs-phantomjs"

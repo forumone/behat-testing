@@ -20,7 +20,8 @@ Once Web Starter has been provisioned and you have created your Drupal site with
 ```
 $ vagrant ssh
 $ cd /vagrant/tests/behat
-$ bin/behat features/test.feature  -p local-selenium
+$ /usr/local/bin/phantomjs --webdriver=8643 &
+$ bin/behat features/TESTS/test.feature
 ```
 
 You should see output including the scenario and steps passed.
@@ -169,5 +170,4 @@ See: http://blog.jetbrains.com/phpstorm/2014/07/using-behat-in-phpstorm/
 
  1. Various Behat Drivers have specific browser functionality
  2. The default Goutte driver does not allow for checking javascript/ajax functionality. Phantomjs as a headless driver does allow for ajax
-
 
