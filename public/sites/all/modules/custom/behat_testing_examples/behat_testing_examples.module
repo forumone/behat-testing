@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Behat Testing Examples feature.
- */
-
-include_once 'behat_testing_examples.features.inc';

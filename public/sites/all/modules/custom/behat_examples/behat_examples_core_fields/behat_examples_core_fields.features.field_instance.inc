@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * behat_testing_examples.features.field_instance.inc
+ * behat_examples_core_fields.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function behat_testing_examples_field_default_field_instances() {
+function behat_examples_core_fields_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'node-boolean-field_boolean'.

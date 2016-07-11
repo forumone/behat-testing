@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * behat_testing_examples.features.inc
+ * behat_examples_core_fields.features.inc
  */
 
 /**
  * Implements hook_node_info().
  */
-function behat_testing_examples_node_info() {
+function behat_examples_core_fields_node_info() {
   $items = array(
     'boolean' => array(
       'name' => t('Boolean Field'),
@@ -20,7 +20,7 @@ function behat_testing_examples_node_info() {
     'file' => array(
       'name' => t('File'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('A simple content type with a file field to be used to illustrate Behat testing on a file field.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
@@ -28,7 +28,7 @@ function behat_testing_examples_node_info() {
     'float' => array(
       'name' => t('Float Field'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('A simple content type with a float field to be used to illustrate Behat testing on a float field.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
@@ -36,7 +36,7 @@ function behat_testing_examples_node_info() {
     'integer' => array(
       'name' => t('Integer Field'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('Add an integer value. The value should not contain a decimal. '),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
@@ -52,7 +52,15 @@ function behat_testing_examples_node_info() {
     'longtext' => array(
       'name' => t('Longtext Field'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('A simple content type with a longtext field to be used to illustrate Behat testing on a longtext field.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'taxonomy_reference' => array(
+      'name' => t('Taxonomy Reference'),
+      'base' => 'node_content',
+      'description' => t('A simple content type with a term-reference field to be used to illustrate Behat testing on a term-reference field.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
@@ -60,7 +68,7 @@ function behat_testing_examples_node_info() {
     'term_reference' => array(
       'name' => t('Term Reference'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('A simple content type with a term-reference field to be used to illustrate Behat testing on a term-reference field.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
