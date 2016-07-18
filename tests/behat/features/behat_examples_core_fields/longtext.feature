@@ -1,7 +1,7 @@
 Feature: Create boolean field test
 
   @api @content @javascript @longtext
-  Scenario: As an Administrator I want make sure the boolean value field is working
+  Scenario: As an Administrator I want make sure the longtext value field is working
     Given I am logged in as a user with the "administrator" role
     When I visit "node/add/longtext"
     Then I should see the text "Create Long Text Field"
