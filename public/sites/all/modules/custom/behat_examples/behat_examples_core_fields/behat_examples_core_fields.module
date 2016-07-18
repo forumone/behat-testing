@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Behat Examples Core Fields feature.
+ */
+
+include_once 'behat_examples_core_fields.features.inc';

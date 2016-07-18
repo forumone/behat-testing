@@ -1,22 +1,35 @@
-From 0ad9bdfc70a5feef91969316aa2864c53fc5757c Mon Sep 17 00:00:00 2001
-From: Daniel McDermott <dmcdermott@forumone.com>
-Date: Thu, 21 Jan 2016 09:09:41 -0800
-Subject: [PATCH] Fix to login
-
----
- .../DrupalExtension/Context/DrupalContext.php      | 27 +++++++++++++++++-----
- src/Drupal/DrupalExtension/Extension.php           |  9 +++++++-
- 2 files changed, 29 insertions(+), 7 deletions(-)
-
-diff --git a/src/Drupal/DrupalExtension/Context/DrupalContext.php b/src/Drupal/DrupalExtension/Context/DrupalContext.php
-index 11eed14..2ba2e2a 100644
---- a/src/Drupal/DrupalExtension/Context/DrupalContext.php
-+++ b/src/Drupal/DrupalExtension/Context/DrupalContext.php
-@@ -339,12 +339,27 @@ class DrupalContext extends MinkContext implements DrupalAwareInterface, Transla
+diff --git a/src/Drupal/DrupalExtension/Context/RawDrupalContext.php b/src/Drupal/DrupalExtension/Context/RawDrupalContext.php
+index 2420859..c29a56f 100644
+--- a/src/Drupal/DrupalExtension/Context/RawDrupalContext.php
++++ b/src/Drupal/DrupalExtension/Context/RawDrupalContext.php
+@@ -137,6 +137,21 @@ class RawDrupalContext extends RawMinkContext implements DrupalAwareInterface {
+   }
+ 
+   /**
++   * Returns a specific css selector.
++   *
++   * @param $name
++   *   string CSS selector name
++   */
++  public function getDrupalSelector($name) {
++    $text = $this->getDrupalParameter('selectors');
++    if (!isset($text[$name])) {
++      var_dump($text);
++      throw new \Exception(sprintf('No such selector configured: %s', $name));
++    }
++    return $text[$name];
++  }
++
++  /**
+    * Get active Drupal Driver.
+    */
+   public function getDriver($name = NULL) {
+@@ -339,12 +354,31 @@ class RawDrupalContext extends RawMinkContext implements DrupalAwareInterface {
     */
    public function loggedIn() {
      $session = $this->getSession();
 +    $page = $session->getPage();
++
 +    // Look for a css selector to determine if a user is logged in.
 +    // Default is the logged-in class on the body tag.
 +    // Which should work with almost any theme.
@@ -27,14 +40,16 @@ index 11eed14..2ba2e2a 100644
 +    } catch (\Behat\Mink\Exception\DriverException $e) {
 +      // This test may fail if the driver did not load any site yet.
 +    }
++
 +    // Some themes do not add that class to the body, so lets check if the
 +    // login form is displayed on /user/login.
 +    $session->visit($this->locatePath('/user/login'));
 +    if (!$page->has('css', $this->getDrupalSelector('login_form_selector'))) {
 +      return TRUE;
 +    }
++
      $session->visit($this->locatePath('/'));
--
+ 
 -    // If a logout link is found, we are logged in. While not perfect, this is
 -    // how Drupal SimpleTests currently work as well.
 -    $element = $session->getPage();
@@ -45,38 +60,26 @@ index 11eed14..2ba2e2a 100644
    }
  
    /**
-@@ -1483,4 +1498,4 @@ class DrupalContext extends MinkContext implements DrupalAwareInterface, Transla
-   /**
-    * @} End of defgroup "debugging steps"
-    */
--}
-+}
-\ No newline at end of file
-diff --git a/src/Drupal/DrupalExtension/Extension.php b/src/Drupal/DrupalExtension/Extension.php
-index 39bdbfb..37f66c6 100644
---- a/src/Drupal/DrupalExtension/Extension.php
-+++ b/src/Drupal/DrupalExtension/Extension.php
-@@ -138,6 +138,13 @@ class Extension implements ExtensionInterface {
+diff --git a/src/Drupal/DrupalExtension/ServiceContainer/DrupalExtension.php b/src/Drupal/DrupalExtension/ServiceContainer/DrupalExtension.php
+index 982a9c3..a458e83 100644
+--- a/src/Drupal/DrupalExtension/ServiceContainer/DrupalExtension.php
++++ b/src/Drupal/DrupalExtension/ServiceContainer/DrupalExtension.php
+@@ -132,11 +132,18 @@ class DrupalExtension implements ExtensionInterface {
+           end()->
+         end()->
+         arrayNode('selectors')->
++          addDefaultsIfNotSet()->
+           children()->
+             scalarNode('message_selector')->end()->
              scalarNode('error_message_selector')->end()->
              scalarNode('success_message_selector')->end()->
              scalarNode('warning_message_selector')->end()->
-+            scalarNode('login_form_selector')->end()->
-+            scalarNode('logged_in_selector')->
-+              defaultValue('body.logged-in')->
-+            end()->
 +            scalarNode('login_form_selector')->
 +              defaultValue('form#user-login')->
++            end()->
++            scalarNode('logged_in_selector')->
++              defaultValue('body.logged-in')->
 +            end()->
            end()->
          end()->
          // Drupal drivers.
-@@ -194,4 +201,4 @@ class Extension implements ExtensionInterface {
-       new Compiler\EventSubscriberPass(),
-     );
-   }
--}
-+}
-\ No newline at end of file
--- 
-2.6.2
-

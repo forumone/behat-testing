@@ -166,6 +166,14 @@ Web Starter by default comes with two behat-grunt tasks:
 See: http://blog.jetbrains.com/phpstorm/2014/07/using-behat-in-phpstorm/
 
 
+## XDEBUG Configuration with Phpstorm 
+1. On the VM export the following global variables before executing your behat test. 
+2. export PHP_IDE_CONFIG="serverName=localhost" && export XDEBUG_CONFIG="idekey=PHPSTORM remote_host=[insert host pc ip address] remote_port=9000"
+3. Make sure that Phpstorm is listening for incoming Xdebug connection
+4. The Phpstorm Remote Debug window should look like this: https://www.evernote.com/l/AFOIz6c6ZgZH95SMVORHE3PKqzXR3-fHl7MB/image.png
+5. The Phpstorm Remote Debug Server window should look like this: https://www.evernote.com/l/AFNq1AfZQjRJ_aWUZt3dsx4jCcjUoB0ldM4B/image.png
+6. The Phpstorm Xdebug settings window should look like this: https://www.evernote.com/l/AFNgeZ8wetNEGLbbN1UEhnPmRShsDhXpP9oB/image.png 
+
 ## Gotchas
 
  1. Various Behat Drivers have specific browser functionality
