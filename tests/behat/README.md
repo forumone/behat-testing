@@ -15,9 +15,12 @@ This is a **work in progress**: Please note that there are many pieces that can 
 
 ## Verify Installation
 
-Once Web Starter has been provisioned and you have created your Drupal site within it, you should be able to immediately run one of the default tests included in this quick-start:
+How to create a quick and dirty D7 test site and run basic tests:
 
 ```
+// Create Basic Drupal 7 Webstarter Drupal Base
+$ cp ../examples/drupal/settings.vm.php sites/default/settings.php
+$ drush si -y
 $ vagrant ssh
 $ cd /vagrant/tests/behat
 $ /usr/local/bin/phantomjs --webdriver=8643 &
