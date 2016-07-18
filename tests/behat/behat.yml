@@ -1,15 +1,64 @@
 default:
+    formatters:
+        pretty: true
+    suites:
+        default:
+          contexts:
+            - FeatureContext
+            - Drupal\DrupalExtension\Context\DrupalContext
+            - Drupal\DrupalExtension\Context\MinkContext
+            - Drupal\DrupalExtension\Context\MessageContext
+            - Drupal\DrupalExtension\Context\DrushContext
+            - Behat\MinkExtension\Context\RawMinkContext
+            - Behat\MinkExtension\Context\RawMinkContext
     extensions:
-        Behat\MinkExtension\Extension:
+        Behat\MinkExtension:
             base_url: http://localhost/
             goutte: ~
             selenium2:
-              browser:              'chrome'
-              capabilities:         { "browserName": "chrome", "browser": "chrome"}
+              browser:              'phantomjs'
+#              capabilities:         { "browserName": "firefox", "deviceType": "desktop"}
               wd_host:              'http://127.0.0.1:8643/wd/hub'
-            browser_name: 'chrome'
-            files_path: 'tests/behat/files/'
-        Drupal\DrupalExtension\Extension:
+            browser_name: 'phantomjs'
+            files_path: 'files/'
+        Drupal\DrupalExtension:
+            blackbox: ~
+            text:
+                log_out: "Log out"
+                log_in: "Log in"
+                password_field: "Password"
+                username_field: "Username"
+            selectors:
+                logged_in_selector: "body.logged-in"
+                login_form_selector: "form#user-login"
+            api_driver: 'drupal'
+            drush:
+              alias: 'local'
+            drupal:
+              drupal_root: '/vagrant/public'
+vm-selenium:
+    formatters:
+        pretty: true
+    suites:
+        default:
+          contexts:
+            - FeatureContext
+            - Drupal\DrupalExtension\Context\DrupalContext
+            - Drupal\DrupalExtension\Context\MinkContext
+            - Drupal\DrupalExtension\Context\MessageContext
+            - Drupal\DrupalExtension\Context\DrushContext
+            - Behat\MinkExtension\Context\RawMinkContext
+    extensions:
+        Behat\MinkExtension:
+            base_url: http://localhost:8081/
+            goutte: ~
+            selenium2:
+              browser:              'firefox'
+              capabilities:         { "browserName": "firefox", "deviceType": "desktop"}
+              wd_host:              'http://10.11.12.1:5555/wd/hub'
+            browser_name: 'firefox'
+            files_path: 'files/'
+        Drupal\DrupalExtension:
             blackbox: ~
             text:
                 log_out: "Log out"
@@ -21,23 +70,70 @@ default:
                 login_form_selector: "form#user-login"
             api_driver: 'drush'
             drush:
-#            Requires Customization
-#             alias: ''
               root: '/vagrant/public'
-local-selenium:
+
+local-phantomjs:
+    formatters:
+        pretty: true
+    suites:
+        default:
+          contexts:
+            - FeatureContext
+            - Drupal\DrupalExtension\Context\DrupalContext
+            - Drupal\DrupalExtension\Context\MinkContext
+            - Drupal\DrupalExtension\Context\MessageContext
+            - Drupal\DrupalExtension\Context\DrushContext
+            - Behat\MinkExtension\Context\RawMinkContext
     extensions:
-        Behat\MinkExtension\Extension:
+        Behat\MinkExtension:
+            base_url: http://localhost:8081/
+            goutte: ~
+            selenium2:
+              browser:              'firefox'
+              capabilities:         { "browserName": "firefox", "deviceType": "desktop"}
+              wd_host:              'http://127.0.0.1:8643/wd/hub'
+            browser_name: 'firefox'
+            files_path: 'files/'
+        Drupal\DrupalExtension:
+            blackbox: ~
+            text:
+                log_out: "Log out"
+                log_in: "Log in"
+                password_field: "Password"
+                username_field: "Username"
+            selectors:
+                logged_in_selector: "body.logged-in"
+                login_form_selector: "form#user-login"
+            api_driver: 'drush'
+            drush:
+              alias: 'dai-usaid.local'
+              root: '/vagrant/public'
+
+local-selenium:
+    formatters:
+        pretty: true
+    suites:
+        default:
+          contexts:
+            - FeatureContext
+            - Drupal\DrupalExtension\Context\DrupalContext
+            - Drupal\DrupalExtension\Context\MinkContext
+            - Drupal\DrupalExtension\Context\MessageContext
+            - Drupal\DrupalExtension\Context\DrushContext
+            - Behat\MinkExtension\Context\RawMinkContext
+    extensions:
+        Behat\MinkExtension:
             # The url for accessing the guest vm from the host
             base_url: http://localhost:8081/
             goutte: ~
             selenium2:
               browser:              'firefox'
-              capabilities:         { "browserName": "firefox", "browser": "firefox"}
+              capabilities:         { "browserName": "firefox", "browser": "chrome"}
               # The url for accessing the guest vm selenium process from the guest VM
               wd_host:              'http://10.11.12.1:5555/wd/hub'
-            browser_name: 'chrome'
-            files_path: 'tests/behat/files/'
-        Drupal\DrupalExtension\Extension:
+            browser_name: 'firefox'
+            files_path: 'files/'
+        Drupal\DrupalExtension:
             blackbox: ~
             text:
                 log_out: "Log out"
@@ -49,6 +145,5 @@ local-selenium:
                 login_form_selector: "form#user-login"
             api_driver: 'drush'
             drush:
-#            Requires Customization
-#             alias: ''
+              alias: 'dai-usaid.local'
               root: '/vagrant/public'

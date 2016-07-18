@@ -1,0 +1,105 @@
+dev:
+    paths:
+        features: 'features'
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: http://forumone:f1dev@dev.gie.byf1.io/
+            goutte: ~
+            selenium2:
+              browser:              'chrome'
+              capabilities:         { "browserName": "chrome", "browser": "chrome"}
+              wd_host:              'http://127.0.0.1:8643/wd/hub'
+            files_path: 'tests/behat/files/'
+        Drupal\DrupalExtension\Extension:
+            blackbox: ~
+            text:
+                log_out: "Log out"
+                log_in: "Log in"
+                password_field: "Password"
+                username_field: "Username"
+            selectors:
+                logged_in_selector: "body.logged-in"
+                login_form_selector: "form#user-login"
+            api_driver: 'drush'
+            drush:
+              binary: '/usr/local/bin/drush'
+              alias: 'dai-usaid.dev'
+              global_options: '--alias-path="."'
+stage:
+    paths:
+        features: 'features'
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: http://forumone:f1dev@stage.gie.byf1.io/
+            goutte: ~
+            selenium2:
+              browser:              'chrome'
+              capabilities:         { "browserName": "chrome", "browser": "chrome"}
+              wd_host:              'http://127.0.0.1:8643/wd/hub'
+            files_path: 'tests/behat/files/'
+        Drupal\DrupalExtension\Extension:
+            blackbox: ~
+            text:
+                log_out: "Log out"
+                log_in: "Log in"
+                password_field: "Password"
+                username_field: "Username"
+            selectors:
+                logged_in_selector: "body.logged-in"
+                login_form_selector: "form#user-login"
+            api_driver: 'drush'
+            drush:
+              binary: '/usr/local/bin/drush'
+              alias: 'dai-usaid.stage'
+              global_options: '--alias-path="."'
+
+sauce-dev:
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: http://forumone:f1dev@dev.gie.byf1.io/
+            goutte: ~
+            selenium2:
+              browser: chrome
+              wd_host: dmcdermott:af313bc8-1daf-472d-8054-fc4b59449489@ondemand.saucelabs.com/wd/hub
+              capabilities: { platform:OS X 10.10, version: 47}
+            files_path: 'tests/behat/files/'
+        Drupal\DrupalExtension\Extension:
+            blackbox: ~
+            text:
+                log_out: "Log out"
+                log_in: "Log in"
+                password_field: "Password"
+                username_field: "Username"
+            selectors:
+                logged_in_selector: "body.logged-in"
+                login_form_selector: "form#user-login"
+            api_driver: 'drush'
+            drush:
+              binary: '/usr/local/bin/drush'
+              alias: 'dai-usaid.dev'
+              global_options: '--alias-path="."'
+sauce-stage:
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: http://forumone:f1dev@stage.gie.byf1.io/
+            goutte: ~
+            selenium2:
+              browser: chrome
+              wd_host: dmcdermott:af313bc8-1daf-472d-8054-fc4b59449489@ondemand.saucelabs.com/wd/hub
+              capabilities: { platform:OS X 10.10, version: 47, setFileDetector: files}
+            files_path: 'tests/behat/files/'
+        Drupal\DrupalExtension\Extension:
+            blackbox: ~
+            text:
+                log_out: "Log out"
+                log_in: "Log in"
+                password_field: "Password"
+                username_field: "Username"
+            selectors:
+                logged_in_selector: "body.logged-in"
+                login_form_selector: "form#user-login"
+            api_driver: 'drush'
+            drush:
+              binary: '/usr/local/bin/drush'
+              alias: 'dai-usaid.stage'
+              global_options: '--alias-path="."'

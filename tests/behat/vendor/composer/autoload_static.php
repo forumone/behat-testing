@@ -4,10 +4,14 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitb06032613970b651c0a591183ab22f6a
+class ComposerStaticInit30bca440d48869763ccea3128a8e9863
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        '32dcc8afd4335739640db7d200c1971d' => __DIR__ . '/..' . '/symfony/polyfill-apcu/bootstrap.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -21,7 +25,6 @@ class ComposerStaticInitb06032613970b651c0a591183ab22f6a
             'Symfony\\Component\\Yaml\\' => 23,
             'Symfony\\Component\\Translation\\' => 30,
             'Symfony\\Component\\Process\\' => 26,
-            'Symfony\\Component\\Finder\\' => 25,
             'Symfony\\Component\\Filesystem\\' => 29,
             'Symfony\\Component\\EventDispatcher\\' => 34,
             'Symfony\\Component\\DomCrawler\\' => 29,
@@ -29,7 +32,19 @@ class ComposerStaticInitb06032613970b651c0a591183ab22f6a
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\Config\\' => 25,
+            'Symfony\\Component\\ClassLoader\\' => 30,
             'Symfony\\Component\\BrowserKit\\' => 29,
+        ),
+        'P' => 
+        array (
+            'Psr\\Http\\Message\\' => 17,
+        ),
+        'G' => 
+        array (
+            'GuzzleHttp\\Psr7\\' => 16,
+            'GuzzleHttp\\Promise\\' => 19,
+            'GuzzleHttp\\' => 11,
+            'Goutte\\' => 7,
         ),
         'B' => 
         array (
@@ -59,10 +74,6 @@ class ComposerStaticInitb06032613970b651c0a591183ab22f6a
         array (
             0 => __DIR__ . '/..' . '/symfony/process',
         ),
-        'Symfony\\Component\\Finder\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/finder',
-        ),
         'Symfony\\Component\\Filesystem\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/filesystem',
@@ -91,15 +102,39 @@ class ComposerStaticInitb06032613970b651c0a591183ab22f6a
         array (
             0 => __DIR__ . '/..' . '/symfony/config',
         ),
+        'Symfony\\Component\\ClassLoader\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/class-loader',
+        ),
         'Symfony\\Component\\BrowserKit\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/browser-kit',
         ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'GuzzleHttp\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
+        ),
+        'GuzzleHttp\\Promise\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
+        ),
+        'GuzzleHttp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
+        ),
+        'Goutte\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fabpot/goutte/Goutte',
+        ),
         'Behat\\Mink\\Driver\\' => 
         array (
-            0 => __DIR__ . '/..' . '/behat/mink-selenium2-driver/src',
-            1 => __DIR__ . '/..' . '/behat/mink-browserkit-driver/src',
-            2 => __DIR__ . '/..' . '/behat/mink-goutte-driver/src',
+            0 => __DIR__ . '/..' . '/behat/mink-browserkit-driver/src',
+            1 => __DIR__ . '/..' . '/behat/mink-goutte-driver/src',
+            2 => __DIR__ . '/..' . '/behat/mink-selenium2-driver/src',
         ),
         'Behat\\Mink\\' => 
         array (
@@ -115,31 +150,12 @@ class ComposerStaticInitb06032613970b651c0a591183ab22f6a
                 0 => __DIR__ . '/..' . '/instaclick/php-webdriver/lib',
             ),
         ),
-        'G' => 
-        array (
-            'Guzzle\\Stream' => 
-            array (
-                0 => __DIR__ . '/..' . '/guzzle/stream',
-            ),
-            'Guzzle\\Parser' => 
-            array (
-                0 => __DIR__ . '/..' . '/guzzle/parser',
-            ),
-            'Guzzle\\Http' => 
-            array (
-                0 => __DIR__ . '/..' . '/guzzle/http',
-            ),
-            'Guzzle\\Common' => 
-            array (
-                0 => __DIR__ . '/..' . '/guzzle/common',
-            ),
-            'Goutte' => 
-            array (
-                0 => __DIR__ . '/..' . '/fabpot/goutte',
-            ),
-        ),
         'D' => 
         array (
+            'Drupal\\Tests\\Driver' => 
+            array (
+                0 => __DIR__ . '/..' . '/drupal/drupal-driver/tests',
+            ),
             'Drupal\\Exception' => 
             array (
                 0 => __DIR__ . '/..' . '/drupal/drupal-extension/src',
@@ -154,15 +170,23 @@ class ComposerStaticInitb06032613970b651c0a591183ab22f6a
             ),
             'Drupal\\Driver' => 
             array (
-                0 => __DIR__ . '/..' . '/drupal/drupal-extension/src',
+                0 => __DIR__ . '/..' . '/drupal/drupal-driver/src',
             ),
             'Drupal\\Component' => 
             array (
-                0 => __DIR__ . '/..' . '/drupal/drupal-extension/src',
+                0 => __DIR__ . '/..' . '/drupal/drupal-driver/src',
             ),
         ),
         'B' => 
         array (
+            'Behat\\Transliterator' => 
+            array (
+                0 => __DIR__ . '/..' . '/behat/transliterator/src',
+            ),
+            'Behat\\Testwork' => 
+            array (
+                0 => __DIR__ . '/..' . '/behat/behat/src',
+            ),
             'Behat\\MinkExtension' => 
             array (
                 0 => __DIR__ . '/..' . '/behat/mink-extension/src',
@@ -181,9 +205,9 @@ class ComposerStaticInitb06032613970b651c0a591183ab22f6a
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitb06032613970b651c0a591183ab22f6a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitb06032613970b651c0a591183ab22f6a::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitb06032613970b651c0a591183ab22f6a::$prefixesPsr0;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit30bca440d48869763ccea3128a8e9863::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit30bca440d48869763ccea3128a8e9863::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit30bca440d48869763ccea3128a8e9863::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }
