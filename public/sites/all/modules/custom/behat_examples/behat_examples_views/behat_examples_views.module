@@ -1,5 +1,7 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the Behat Examples Views feature.
  */
+
+include_once 'behat_examples_views.features.inc';
