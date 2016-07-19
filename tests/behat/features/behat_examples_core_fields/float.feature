@@ -10,4 +10,6 @@ Feature: Create boolean field test
     Then for "Float" I enter "145.67837892"
     Then I press "Save"
     Then I should see "Testing Float"
+    # Note that the returned float value is rounded up by Drupal to the nearest 100th point (8).
+    # This is the desired behavior.
     And I should see "145.68"
