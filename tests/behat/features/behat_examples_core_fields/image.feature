@@ -1,6 +1,6 @@
 Feature: Create boolean field test
 
-  @api @content @javascript @image
+  @api @content @javascript @image @core
   Scenario: As an Administrator I want make sure the image field is working
     Given I am logged in as a user with the "administrator" role
     When I visit "node/add/image"

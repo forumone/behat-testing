@@ -1,6 +1,6 @@
 Feature: Create boolean field test
 
-  @api @content @javascript @longtext_summary
+  @api @content @javascript @longtext_summary @core
   Scenario: As an Administrator I want make sure the longtext with summary field is working
     Given I am logged in as a user with the "administrator" role
     When I visit "node/add/longtext-with-summary"

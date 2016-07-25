@@ -1,6 +1,6 @@
 Feature: Create boolean field test
 
-  @api @content @javascript @list_multiselect
+  @api @content @javascript @list_multiselect @core
   Scenario: As an Administrator I want make sure the list field is working
     Given I am logged in as a user with the "administrator" role
     When I visit "node/add/list"

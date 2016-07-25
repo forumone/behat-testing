@@ -1,6 +1,6 @@
 Feature: Create a core_fields test
 
-  @api @content @javascript @core_fields
+  @api @content @javascript @all_core
 
   # This example makes use of a 'Scenario Outline', which allows us to test a set of values using placeholders
   # The string used for the "<placeholder>" can be anything, just like a normal variable. The placeholders must

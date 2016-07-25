@@ -161,7 +161,26 @@ Web Starter by default comes with two behat-grunt tasks:
  $ vagrant ssh
  $ cd /vagrant/tests/behat
  $ bin/behat features/test-js.feature  -p local-selenium
+
  ```
+## Behat Example Features
+ 1. Example Behat features can be run and reviewed to provide a basis to build your own custom Behat features
+ 2. Example Features can be found in tests/behat/features
+ 3. Begin with behat_examples_core_fields by enabling this module
+ 4. drush en behat_examples_core_fields -y
+ 5. All core fields can be run individually by adding a tag signifying the field type specified on the feature to bin/behat
+ 6. bin/behat --tags="text"
+ 7. bin/behat --tags="boolean"
+ 8. bin/behat --tags="integer"
+ 9. bin/behat --tags="float"
+ 10. bin/behat --tags="list"
+ 11. bin/behat --tags="list_multiselect"
+ 12. bin/behat --tags="longtext"
+ 13. bin/behat --tags="longtext_summary"
+ 14. bin/behat --tags="term_reference"
+ 15. bin/behat --tags="file"
+ 16. bin/behat --tags="image"
+ 17. All core tests can be run at once using the tag @core
 
 
 ## Optional PhpStorm Integration
