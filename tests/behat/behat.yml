@@ -33,7 +33,7 @@ default:
                 login_form_selector: "form#user-login"
             api_driver: 'drupal'
             drush:
-              alias: 'local'
+              alias: 'behat.local'
             drupal:
               drupal_root: '/vagrant/public'
 vm-selenium:
@@ -69,6 +69,8 @@ vm-selenium:
                 logged_in_selector: "body.logged-in"
                 login_form_selector: "form#user-login"
             api_driver: 'drush'
+            drush:
+              alias: 'behat.local'
             drush:
               root: '/vagrant/public'
 
