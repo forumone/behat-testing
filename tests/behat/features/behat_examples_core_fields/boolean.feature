@@ -1,6 +1,6 @@
 Feature: Create boolean field test
 
-  @api @content @javascript @boolean
+  @api @content @javascript @boolean @core
   Scenario: As an Administrator I want make sure the boolean value field is working
     Given I am logged in as a user with the "administrator" role
     When I visit "node/add/boolean"
