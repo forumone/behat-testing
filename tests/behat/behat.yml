@@ -57,7 +57,7 @@ vm-selenium:
               capabilities:         { "browserName": "firefox", "deviceType": "desktop"}
               wd_host:              'http://10.11.12.1:5555/wd/hub'
             browser_name: 'firefox'
-            files_path: 'files/'
+            files_path: '/vagrant/tests/behat/files/'
         Drupal\DrupalExtension:
             blackbox: ~
             text:
@@ -71,8 +71,8 @@ vm-selenium:
             api_driver: 'drush'
             drush:
               alias: 'behat.local'
-            drush:
-              root: '/vagrant/public'
+            drupal:
+              drupal_root: '/vagrant/public'
 
 local-phantomjs:
     formatters:
@@ -108,8 +108,8 @@ local-phantomjs:
                 login_form_selector: "form#user-login"
             api_driver: 'drush'
             drush:
-              alias: 'dai-usaid.local'
-              root: '/vagrant/public'
+              alias: 'dai-usaid.guest'
+              drupal_root: '/vagrant/public'
 
 local-selenium:
     formatters:
@@ -147,5 +147,5 @@ local-selenium:
                 login_form_selector: "form#user-login"
             api_driver: 'drush'
             drush:
-              alias: 'dai-usaid.local'
-              root: '/vagrant/public'              root: '/vagrant/public'
+              alias: 'dai-usaid.guest'
+              drupal_root: '/vagrant/public'
