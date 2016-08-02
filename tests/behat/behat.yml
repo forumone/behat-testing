@@ -20,7 +20,7 @@ default:
 #              capabilities:         { "browserName": "firefox", "deviceType": "desktop"}
               wd_host:              'http://127.0.0.1:8643/wd/hub'
             browser_name: 'phantomjs'
-            files_path: 'files/'
+            files_path: '/vagrant/tests/behat/files/'
         Drupal\DrupalExtension:
             blackbox: ~
             text:
@@ -57,7 +57,7 @@ vm-selenium:
               capabilities:         { "browserName": "firefox", "deviceType": "desktop"}
               wd_host:              'http://10.11.12.1:5555/wd/hub'
             browser_name: 'firefox'
-            files_path: 'files/'
+            files_path: '/vagrant/tests/behat/files/'
         Drupal\DrupalExtension:
             blackbox: ~
             text:
@@ -95,7 +95,7 @@ local-phantomjs:
               capabilities:         { "browserName": "firefox", "deviceType": "desktop"}
               wd_host:              'http://127.0.0.1:8643/wd/hub'
             browser_name: 'firefox'
-            files_path: 'files/'
+            files_path: '/vagrant/tests/behat/files/'
         Drupal\DrupalExtension:
             blackbox: ~
             text:
@@ -108,8 +108,8 @@ local-phantomjs:
                 login_form_selector: "form#user-login"
             api_driver: 'drush'
             drush:
-              alias: 'dai-usaid.local'
-              root: '/vagrant/public'
+              alias: 'dai-usaid.guest'
+              drupal_root: '/vagrant/public'
 
 local-selenium:
     formatters:
@@ -134,7 +134,7 @@ local-selenium:
               # The url for accessing the guest vm selenium process from the guest VM
               wd_host:              'http://10.11.12.1:5555/wd/hub'
             browser_name: 'firefox'
-            files_path: 'files/'
+            files_path: '/vagrant/tests/behat/files/'
         Drupal\DrupalExtension:
             blackbox: ~
             text:
@@ -147,5 +147,5 @@ local-selenium:
                 login_form_selector: "form#user-login"
             api_driver: 'drush'
             drush:
-              alias: 'dai-usaid.local'
-              root: '/vagrant/public'
+              alias: 'dai-usaid.guest'
+              drupal_root: '/vagrant/public'

@@ -1,5 +1,10 @@
 <?php
 $aliases['local'] = array(
+  'root' => '/vagrant/public'
+);
+
+
+$aliases['guest'] = array(
   'parent' => '@parent',
   'uri' => 'http://10.11.12.14',
   'root' => '/vagrant/public',

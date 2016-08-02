@@ -8,12 +8,14 @@ use Drupal\DrupalExtension\Context\DrupalContext;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
+use Behat\Behat\Context\Context;
+use Behat\Testwork\Hook\Scope\BeforeSuiteScope;
 use Behat\Behat\Hook\Scope\AfterScenarioScope;
 
 /**
  * Defines application features from the specific context.
  */
-class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext {
+class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext, Context {
 
   /**
    * Initializes context.
@@ -22,20 +24,16 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   }
 
   /**
-   * Fix the screen resolution so that all browser drivers get a correct 'Desktop' view
-   * @TODO Allow a custom profile window size
-   *
-   *
-   * @BeforeScenario
+   * @BeforeSuite
    */
-  public function beforeScenario() {
-    $driver = $this->getMinkParameters();
-    if ($driver['browser_name'] == 'phantomjs') {
-      $this->getSession()->getDriver()->resizeWindow(1440, 900);
-    }
+  public static function beforeScenario(BeforeSuiteScope $scope) {
+    $test = 1;
+//    $driver = $this->getMinkParameters();
+//    if ($driver['browser_name'] == 'phantomjs') {
+//      $this->getSession()->getDriver()->resizeWindow(1440, 900);
+//    }
   }
 
-  //  TODO: Figure a smarter place for this @@@@!!!!! For use with local setups only !!!!!@@@@
   /**
    * @AfterScenario
    */
@@ -217,7 +215,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
         }
       }
       $this->visitPath('user/' . $json->uid . '/edit');
-      $this->fillField('First Name', 'Test First');
+      $this->getSession()->getPage()->fillField('First Name', 'Test First');
       $this->fillField('Last Name', 'Test Last');
       $this->checkOption('Intern');
       $this->pressButton('Save');
@@ -287,6 +285,8 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
       }
     }
   }
+
+
 
   /**
    * @Then I visit the user edit screen and apply a social media url to each user
