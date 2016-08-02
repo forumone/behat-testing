@@ -11,3 +11,14 @@ Feature: Create boolean field test
     Then I press "Save"
     Then I should see "Testing Boolean"
     And I should see "Yes"
+
+#    Below is the same test using the Drupal API Drive
+
+  Scenario: Create nodes with fields
+    # The Drupal API allows us to create content using 'Given "content_type" content
+    # and to fill in the values of fields using Gherkin
+    Given "boolean" content:
+      | title                             | boolean |
+      | Testing Boolean Drupal API Driver | yes     |
+
+    Then I should see the text "Testing Boolean Drupal API Driver"
