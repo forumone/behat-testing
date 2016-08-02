@@ -68,11 +68,11 @@ vm-selenium:
             selectors:
                 logged_in_selector: "body.logged-in"
                 login_form_selector: "form#user-login"
-            api_driver: 'drush'
+            api_driver: 'drupal'
             drush:
               alias: 'behat.local'
-            drush:
-              root: '/vagrant/public'
+            drupal:
+              drupal_root: '/vagrant/public'
 
 local-phantomjs:
     formatters:
