@@ -13,7 +13,7 @@ Feature: Create boolean field test
     And I should see "Yes"
 
 #    Below is the same test using the Drupal API Drive
-
+  @api @content @javascript @boolean @core
   Scenario: Create nodes with fields
     # The Drupal API allows us to create content using 'Given "content_type" content
     # and to fill in the values of fields using Gherkin
@@ -21,4 +21,6 @@ Feature: Create boolean field test
       | title                             | boolean |
       | Testing Boolean Drupal API Driver | yes     |
 
+    And I am logged in as a user with the "administrator" role
+    When I visit "admin/content"
     Then I should see the text "Testing Boolean Drupal API Driver"
