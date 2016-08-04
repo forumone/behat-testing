@@ -90,9 +90,9 @@ function behat_test_feature_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'display_label' => 0,
+        'display_label' => 1,
       ),
-      'type' => 'options_onoff',
+      'type' => 'options_buttons',
       'weight' => -3,
     ),
   );
@@ -429,12 +429,12 @@ function behat_test_feature_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'taxonomy',
+      'module' => 'options',
       'settings' => array(
         'autocomplete_path' => 'taxonomy/autocomplete',
         'size' => 60,
       ),
-      'type' => 'taxonomy_autocomplete',
+      'type' => 'options_select',
       'weight' => 6,
     ),
   );
