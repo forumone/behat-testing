@@ -56,7 +56,8 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    */
   public function alterMinkParameters(BeforeScenarioScope $event) {
     $driver = $this->getMinkParameters();
-    if ($driver['browser_name'] == 'phantomjs') {
+    $session = $this->getMink()->getDefaultSessionName();
+    if ($driver['browser_name'] == 'phantomjs' && $session != 'goutte') {
       $this->getSession()->getDriver()->resizeWindow(1440, 900);
     }
   }
@@ -66,7 +67,9 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    */
   public function dumpInfoAfterFailedStep(AfterScenarioScope $event) {
     $driver = $this->getMinkParameters();
-    if (!($event->getTestResult()->isPassed()) && $driver['browser_name'] == 'phantomjs') {
+    $session = $this->getMink()->getDefaultSessionName();
+    $profile = $this->getSession();
+    if (!($event->getTestResult()->isPassed()) && $driver['browser_name'] == 'phantomjs' && $session != 'goutte') {
       $this->getSession()->getPage();
       $filename = 'failed.html';
       $filepath = (ini_get('upload_tmp_dir') ? ini_get('upload_tmp_dir') : sys_get_temp_dir());
