@@ -8,12 +8,20 @@
         "drupal/drupal-driver": "dev-master",
         "symfony/dependency-injection": "~2.7",
         "symfony/event-dispatcher": "~2.7",
-        "drupal/drupal-extension": "^3.2.0"
+        "drupal/drupal-extension": "^3.2.0",
+        "cweagans/composer-patches": "~1.0"
     },
     "minimum-stability": "dev",
     "config": {
         "preferred-install": "source",
         "bin-dir": "bin/",
         "discard-changes": true
+    },
+    "extra": {
+        "patches": {
+            "drupal/drupal-extension": {
+                "Fix login check functionality": "patches/behat_xml_filename.patch"
+            }
+        }
     }
 }

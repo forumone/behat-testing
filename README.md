@@ -53,3 +53,14 @@ If the virtual machine does not boot up and you get a message saying there was a
 ## Drush Alias File
 
 A sample Drush alias file has been included at /examples/drupal/site.aliases.drushrc.php . Simply copy this file into public/sites/all/drush and modify the hostnames inside it. You will be able to access the vagrant environment with 'drush @site.local', dev with 'drush @site.dev', etc. 
+
+
+## Behat Grunt Plugin
+
+The Behat Grunt Plugin is incredibly important and allows you to run multiple behat tasks and to export all data to the jUnit XML files. The jUnit XML files are important because they allow Jenkins to read the pass/fail of behat tests. 
+A Behat Grunt Plugin is available at the root of this project and can be called with the following command at the root of the project:
+
+#### Host Machine
+# behat:local
+#### Guest Machine
+# /usr/local/node/{{ node version }}/lib/node_modules/grunt-cli/bin/grunt --gruntfile "/vagrant/Gruntfile.js" behat:local

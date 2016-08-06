@@ -654,12 +654,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "158c17127299b183d4b9784d7385bb29fe2f5982"
+                "reference": "3b45e7675e8997ac96142b0265d158343958f708"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/158c17127299b183d4b9784d7385bb29fe2f5982",
-                "reference": "158c17127299b183d4b9784d7385bb29fe2f5982",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/3b45e7675e8997ac96142b0265d158343958f708",
+                "reference": "3b45e7675e8997ac96142b0265d158343958f708",
                 "shasum": ""
             },
             "require": {
@@ -708,7 +708,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2016-07-21 20:48:12"
+            "time": "2016-08-04 00:05:49"
         },
         {
             "name": "guzzlehttp/promises",
@@ -890,12 +890,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-message.git",
-                "reference": "85d63699f0dbedb190bbd4b0d2b9dc707ea4c298"
+                "reference": "14b9b813c5e36af4498ef38ef97938bf7090fd52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-message/zipball/85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
-                "reference": "85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/14b9b813c5e36af4498ef38ef97938bf7090fd52",
+                "reference": "14b9b813c5e36af4498ef38ef97938bf7090fd52",
                 "shasum": ""
             },
             "require": {
@@ -923,6 +923,7 @@
                 }
             ],
             "description": "Common interface for HTTP messages",
+            "homepage": "https://github.com/php-fig/http-message",
             "keywords": [
                 "http",
                 "http-message",
@@ -931,7 +932,7 @@
                 "request",
                 "response"
             ],
-            "time": "2015-05-04 20:22:00"
+            "time": "2016-08-05 11:47:47"
         },
         {
             "name": "symfony/browser-kit",
@@ -1507,12 +1508,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "e0ecb4772c6186bb5288076daf421bed9ef57489"
+                "reference": "70ab1dd18e4daef3fb3ce5c47c9fbd5c52bbe3f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/e0ecb4772c6186bb5288076daf421bed9ef57489",
-                "reference": "e0ecb4772c6186bb5288076daf421bed9ef57489",
+                "url": "https://api.github.com/repos/symfony/process/zipball/70ab1dd18e4daef3fb3ce5c47c9fbd5c52bbe3f9",
+                "reference": "70ab1dd18e4daef3fb3ce5c47c9fbd5c52bbe3f9",
                 "shasum": ""
             },
             "require": {
@@ -1548,7 +1549,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2016-07-28 11:15:50"
+            "time": "2016-08-05 08:52:18"
         },
         {
             "name": "symfony/translation",
