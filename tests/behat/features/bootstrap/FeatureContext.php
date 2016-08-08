@@ -10,7 +10,11 @@ use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Behat\Context\Context;
 use Behat\Testwork\Hook\Scope\BeforeSuiteScope;
+use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use Behat\Behat\Hook\Scope\AfterScenarioScope;
+use Drupal\DrupalExtension\Hook\Scope\AfterNodeCreateScope;
+use Drupal\DrupalExtension\Hook\Scope\AfterUserCreateScope;
+use Drupal\DrupalExtension\Hook\Scope\AfterTermCreateScope;
 
 /**
  * Defines application features from the specific context.
@@ -22,16 +26,40 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    */
   public function __construct() {
   }
+  public $created_nodes;
+  public $created_users;
+  public $created_terms;
 
   /**
-   * @BeforeSuite
+   * @AfterNodeCreate
    */
-  public static function beforeScenario(BeforeSuiteScope $scope) {
-    $test = 1;
-//    $driver = $this->getMinkParameters();
-//    if ($driver['browser_name'] == 'phantomjs') {
-//      $this->getSession()->getDriver()->resizeWindow(1440, 900);
-//    }
+  public function grabNodeFields(AfterNodeCreateScope $scope) {
+    $this->created_nodes[] = $scope->getEntity();
+  }
+
+  /**
+   * @AfterUserCreate
+   */
+  public function grabUserFields(AfterUserCreateScope $scope) {
+    $this->created_users[] = $scope->getEntity();
+  }
+
+  /**
+   * @AfterTermCreate
+   */
+  public function grabTermFields(AfterTermCreateScope $scope) {
+    $this->created_terms[] = $scope->getEntity();
+  }
+
+  /**
+   * @BeforeScenario
+   */
+  public function alterMinkParameters(BeforeScenarioScope $event) {
+    $driver = $this->getMinkParameters();
+    $session = $this->getMink()->getDefaultSessionName();
+    if ($driver['browser_name'] == 'phantomjs' && $session != 'goutte') {
+      $this->getSession()->getDriver()->resizeWindow(1440, 900);
+    }
   }
 
   /**
@@ -39,7 +67,9 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
    */
   public function dumpInfoAfterFailedStep(AfterScenarioScope $event) {
     $driver = $this->getMinkParameters();
-    if (!($event->getTestResult()->isPassed()) && $driver['browser_name'] == 'phantomjs') {
+    $session = $this->getMink()->getDefaultSessionName();
+    $profile = $this->getSession();
+    if (!($event->getTestResult()->isPassed()) && $driver['browser_name'] == 'phantomjs' && $session != 'goutte') {
       $this->getSession()->getPage();
       $filename = 'failed.html';
       $filepath = (ini_get('upload_tmp_dir') ? ini_get('upload_tmp_dir') : sys_get_temp_dir());
@@ -267,8 +297,6 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
       }
     }
     else {
-//      if (empty(‌‌$this->{"*Drupal\DrupalExtension\Context\RawDrupalContext*drupal"}->environment->contexts['Drupal\DrupalExtension\Context\DrupalContext']->nodes)) {
-//
       if (TRUE) {
         throw new \Exception(sprintf("Unable to retrieve search information via drush"));
       }
@@ -287,12 +315,149 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   }
 
 
+  /**
+   * @Then I iterate through nodes created and check that fields are correct
+   */
+  public function iIterateThroughNodesCreatedAndCheckThatFieldsAreCorrect() {
+    foreach ($this->created_nodes as $node) {
+      if (!empty($node) && !empty($node->nid)) {
+        $this->visitPath('node/' . $node->nid . '/edit');
+        foreach ($node as $key => $field) {
+          if (strpos($key, 'field_') > -1) {
+            $cardinality = 0;
+//            $field_name = str_replace('field_', '', $key);
+
+            $field_final_value = $this->getFieldSelectedValues($key, $cardinality);
+            foreach ($field['und'] as $value) {
+              if (is_array($field_final_value)) {
+                // Field Value Matches
+                if (!empty($value['value']) && !in_array($value['value'], array_column($field_final_value, 0))) {
+                  throw new \Exception(sprintf("No match found for field " . $key));
+                  // Taxonomy References Matches
+                }
+                elseif (!empty($value['tid']) && !in_array($value['tid'], $field_final_value)) {
+                  throw new \Exception(sprintf("No match found for field " . $key));
+                }
+              }
+              else {
+                if (!empty($value['value'])) {
+                  $match = ($value['value'] == $field_final_value);
+                }
+                elseif (!empty($value['tid'])) {
+                  $match = ($value['tid'] == $field_final_value);
+                }
+
+                $cardinality = +1;
+                if (!$match) {
+                  throw new \Exception(sprintf("No match found for field " . $key));
+                }
+              }
+            }
+          }
+        }
+      }
+      else {
+        throw new \Exception(sprintf("No node or nid found, make sure the profile is using the Drupal api_driver"));
+      }
+    }
+  }
 
   /**
-   * @Then I visit the user edit screen and apply a social media url to each user
+   * @Then I iterate through terms created and check that fields are correct
    */
-  public function iVisitTheUserEditScreenAndApplyASocialMediaUrlToEachUser() {
-    $test = 1;
+  public function iIterateThroughTermsCreatedAndCheckThatFieldsAreCorrect() {
+    foreach ($this->created_terms as $term) {
+      if (!empty($term) && !empty($term->tid)) {
+        $this->visitPath('taxonomy/term/' . $term->tid);
+        $this->assertSession()->pageTextContains($term->name);
+      }
+      else {
+        throw new \Exception(sprintf("No term or term id found, make sure the profile is using the Drupal api_driver"));
+      }
+    }
   }
+
+  /**
+   * @Then I iterate through users created and check that fields are correct
+   */
+  public function iIterateThroughUsersCreatedAndCheckThatFieldsAreCorrect() {
+    foreach ($this->created_users as $user) {
+      if (!empty($user) && !empty($user->uid)) {
+        $this->visitPath('user/' . $user->uid);
+        $this->assertSession()->pageTextContains($user->name);
+      }
+      else {
+        throw new \Exception(sprintf("No user or user id found, make sure the profile is using the Drupal api_driver"));
+      }
+    }
+  }
+
+
+  public function getFieldSelectedValues($field, $cardinality) {
+    //Try to grab a single cardinality field
+    $field_value = $this->getSession()
+      ->getPage()
+      ->findById('edit-' . str_replace('_', '-', $field) . '-und');
+
+    // If single cardinality field doesn't work try multiple
+    if (empty($field_value) || !($field_value->getValue())) {
+      //Try to grab a multiple cardinality field
+      $field_value = $this->getSession()
+        ->getPage()
+        ->findById('edit-' . str_replace('_', '-', $field) . '-und-' . $cardinality . '-value');
+    }
+
+    // If single cardinality field doesn't work try multiple
+    if (empty($field_value) || !($field_value->getValue())) {
+      //Try to grab a multiple cardinality field
+      $field_value = $this->getSession()
+        ->getPage()
+        ->findById('edit-' . str_replace('_', '-', $field) . '-und-' . $cardinality);
+    }
+
+    if (!empty($field_value) && ($field_value->getValue())) {
+      //Return the single value
+      return ($field_value->getValue());
+    }
+
+    // Multiple value
+    $sub_value = array();
+    $multi_match = FALSE;
+
+    // If single cardinality field doesn't work try multiple checkboxes
+    $field_value = $this->getSession()
+      ->getPage()
+      ->findById('edit-' . str_replace('_', '-', $field) . '-und');
+    if (!empty($field_value)) {
+      $field_value = $field_value->findAll('css', '.form-checkbox');
+    }
+
+    // If single cardinality field doesn't work try multiple radios
+    if (empty($field_value)) {
+      $field_value = $this->getSession()
+        ->getPage()
+        ->findById('edit-' . str_replace('_', '-', $field) . '-und');
+      if (!empty($field_value)) {
+        $field_value = $field_value->findAll('css', '.form-radio');
+      }
+    }
+
+    if (count($field_value) > 1) {
+      foreach ($field_value as $individual_final_value) {
+        if (!(is_null(($individual_final_value->getValue()))) && $individual_final_value->isChecked() || ($individual_final_value->isSelected())) {
+          $sub_value[] = array($individual_final_value->getValue());
+        }
+      }
+    }
+
+    if (!$sub_value) {
+      throw new \Exception(sprintf("No match found for multiple cardinality field"));
+    }
+    else {
+      //Return the multiple value
+      return $sub_value;
+    }
+  }
+
 
 }

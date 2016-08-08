@@ -1,0 +1,66 @@
+From 1e54e8e7a76106cef9939d9b8ed89b2a1c9657fc Mon Sep 17 00:00:00 2001
+From: Daniel McDermott <dmcdermott@forumone.com>
+Date: Fri, 5 Aug 2016 16:55:14 -0700
+Subject: [PATCH] Default jUnit XML output files will now follow the same name
+ of the original feature file
+
+---
+ .../EventListener/JUnit/JUnitOutlineStoreListener.php   | 17 ++++++++++++++++-
+ .../Output/Node/Printer/JUnit/JUnitSuitePrinter.php     |  6 +++++-
+ 2 files changed, 21 insertions(+), 2 deletions(-)
+
+diff --git a/src/Behat/Behat/Output/Node/EventListener/JUnit/JUnitOutlineStoreListener.php b/src/Behat/Behat/Output/Node/EventListener/JUnit/JUnitOutlineStoreListener.php
+index 4458ebb..a6545e4 100644
+--- a/src/Behat/Behat/Output/Node/EventListener/JUnit/JUnitOutlineStoreListener.php
++++ b/src/Behat/Behat/Output/Node/EventListener/JUnit/JUnitOutlineStoreListener.php
+@@ -19,6 +19,7 @@ use Behat\Testwork\EventDispatcher\Event\BeforeSuiteTested;
+ use Behat\Testwork\Output\Formatter;
+ use Behat\Testwork\Output\Node\EventListener\EventListener;
+ use Symfony\Component\EventDispatcher\Event;
++use Behat\Behat\Gherkin\Specification\LazyFeatureIterator;
+ 
+ /**
+  * Listens for Outline events store the current one
+@@ -53,7 +54,21 @@ final class JUnitOutlineStoreListener implements EventListener
+      */
+     public function listenEvent(Formatter $formatter, Event $event, $eventName)
+     {
+-        $this->captureOutlineOnBeforeOutlineEvent($event);
++      $this->captureOutlineOnBeforeOutlineEvent($event);
++      if (method_exists($event, 'getSpecificationIterator')) {
++        $iterators = $event->getSpecificationIterator();
++        foreach ($iterators as $iterator) {
++          if ($iterator instanceof FeatureNode){
++            $file = $iterator->getFile();
++            if (!empty($file)) {
++              $path_parts = pathinfo($file);
++              if (!empty($path_parts['filename'])) {
++                $formatter->fileName = $path_parts['filename'];
++              }
++            }
++          }
++        }
++      }
+ 
+         $this->printHeaderOnBeforeSuiteTestedEvent($formatter, $event);
+         $this->printFooterOnAfterSuiteTestedEvent($formatter, $event);
+diff --git a/src/Behat/Behat/Output/Node/Printer/JUnit/JUnitSuitePrinter.php b/src/Behat/Behat/Output/Node/Printer/JUnit/JUnitSuitePrinter.php
+index 7e5efad..3e859e2 100644
+--- a/src/Behat/Behat/Output/Node/Printer/JUnit/JUnitSuitePrinter.php
++++ b/src/Behat/Behat/Output/Node/Printer/JUnit/JUnitSuitePrinter.php
+@@ -44,7 +44,11 @@ final class JUnitSuitePrinter implements SuitePrinter
+ 
+         /** @var JUnitOutputPrinter $outputPrinter */
+         $outputPrinter = $formatter->getOutputPrinter();
+-        $outputPrinter->createNewFile($suite->getName());
++        if (!empty($formatter->fileName)) {
++          $outputPrinter->createNewFile($formatter->fileName);
++        } else {
++          $outputPrinter->createNewFile($suite->getName());
++        }
+     }
+ 
+     /**
+-- 
+2.7.4
+

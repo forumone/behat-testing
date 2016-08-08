@@ -80,7 +80,7 @@ function behat_test_feature_field_default_field_bases() {
   // Exported field_base: 'field_test_float_list'.
   $field_bases['field_test_float_list'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_test_float_list',
@@ -93,8 +93,10 @@ function behat_test_feature_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        '1.1' => 1.1,
-        '1.2' => 1.2,
+        '0.22' => '.22',
+        '0.55' => '.55',
+        '0.333' => '.333',
+        '0.75' => '.75',
       ),
       'allowed_values_function' => '',
     ),
@@ -142,7 +144,7 @@ function behat_test_feature_field_default_field_bases() {
   // Exported field_base: 'field_test_integer_list'.
   $field_bases['field_test_integer_list'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_test_integer_list',
@@ -154,7 +156,14 @@ function behat_test_feature_field_default_field_bases() {
     'locked' => 0,
     'module' => 'list',
     'settings' => array(
-      'allowed_values' => array(),
+      'allowed_values' => array(
+        1 => 1,
+        2 => 2,
+        3 => 3,
+        4 => 4,
+        5 => 5,
+        6 => 6,
+      ),
       'allowed_values_function' => '',
     ),
     'translatable' => 0,
@@ -183,7 +192,7 @@ function behat_test_feature_field_default_field_bases() {
   // Exported field_base: 'field_test_term_reference'.
   $field_bases['field_test_term_reference'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_test_term_reference',
