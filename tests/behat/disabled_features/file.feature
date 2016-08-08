@@ -15,5 +15,19 @@ Feature: Create boolean field test
     Then I press "Save"
     Then I should see "Testing File"
     And I should see "Test File Description"
-    Then I click "Test File Description"
-    Then I should see "text.txt"
+    Then I click "test.txt"
+    #todo This is still failing
+    Then I should see "This is a text file."
+
+  # Below is a similar test using the Drupal API Drive
+  @api @content @javascript @file @core
+  Scenario: Create nodes with fields
+    # The Drupal API allows us to create content using 'Given "content_type" content
+    # and to fill in the values of fields using Gherkin
+    Given "file" content:
+      | title                               | file     |
+      | Testing File with Drupal API Driver | test.txt |
+
+    And I am logged in as a user with the "administrator" role
+    When I visit "admin/content"
+    Then I should see the text "Testing File with Drupal API Driver"

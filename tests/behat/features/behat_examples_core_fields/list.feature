@@ -11,3 +11,16 @@ Feature: Create boolean field test
     Then I press "Save"
     Then I should see "Testing List"
     And I should see "Orange"
+
+  # Below is a similar test using the Drupal API Drive
+  @api @content @javascript @list @core
+  Scenario: Create nodes with fields
+    # The Drupal API allows us to create content using 'Given "content_type" content
+    # and to fill in the values of fields using Gherkin
+    Given "list" content:
+      | title                                | list |
+      | Testing List with Drupal API Driver | Orange  |
+
+    And I am logged in as a user with the "administrator" role
+    When I visit "admin/content"
+    Then I should see the text "Testing List with Drupal API Driver"
