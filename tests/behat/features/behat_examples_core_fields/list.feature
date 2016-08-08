@@ -13,7 +13,7 @@ Feature: Create boolean field test
     And I should see "Orange"
 
   # Below is a similar test using the Drupal API Drive
-  @api @content @javascript @integer @core
+  @api @content @javascript @list @core
   Scenario: Create nodes with fields
     # The Drupal API allows us to create content using 'Given "content_type" content
     # and to fill in the values of fields using Gherkin
