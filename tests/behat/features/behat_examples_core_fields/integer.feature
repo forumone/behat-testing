@@ -14,13 +14,21 @@ Feature: Create boolean field test
 
   # Below is a similar test using the Drupal API Drive
   @api @content @javascript @integer @core
-  Scenario: Create nodes with fields
+  Scenario: Create nodes with integer fields
     # The Drupal API allows us to create content using 'Given "content_type" content
     # and to fill in the values of fields using Gherkin
     Given "integer" content:
-      | title                                | integer |
-      | Testing Integer with Drupal API Driver | 123456  |
+      | title                                                     | integer | promoted |
+      | Test Page One Integer with Drupal API Driver              | 123456  | 0        |
+      | Test Page Two Integer with Drupal API Driver              | 654321  | 0        |
+      | Test Page Three Integer with Drupal API Driver - Promoted | 246810  | 1        |
 
     And I am logged in as a user with the "administrator" role
     When I visit "admin/content"
-    Then I should see the text "Testing Integer with Drupal API Driver"
+    Then I should see the text "Test Page One Integer with Drupal API Driver"
+    And I should see the text "Test Page Two Integer with Drupal API Driver "
+    And I should see the text "Test Page Three Integer with Drupal API Driver - Promoted "
+    When I visit "/home"
+    Then I should not see the text "Test Page One Integer with Drupal API Driver"
+    And I should not see the text "Test Page Two Integer with Drupal API Driver"
+    And I should see the text "Test Page Three Integer with Drupal API Driver - Promoted"
