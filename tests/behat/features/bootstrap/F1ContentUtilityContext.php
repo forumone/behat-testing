@@ -184,7 +184,6 @@ class F1ContentUtilityContext extends F1FundamentalContext implements SnippetAcc
 
   }
 
-
   /**
    *  Access Irregular Field Types
    *
@@ -234,12 +233,122 @@ class F1ContentUtilityContext extends F1FundamentalContext implements SnippetAcc
     $this->getSession()->executeScript($javascript);
   }
 
+  /**
+   * @Then I should see the WYSIWYG buttons in the correct order
+   */
+  public function wysiwygButtonsInCorrectOrder() {
+    // @todo fix after https://github.com/jcalderonzumba/gastonjs/issues/19
+    $this->getSession()->wait(5000);
+    $page = $this->getSession()->getPage();
+    $expectations = [
+      'Undo',
+      'Redo',
+      'Select All',
+      'Cut',
+      'Copy',
+      'Paste',
+      'Paste as plain text',
+      'Paste from Word',
+      'Find',
+      'Remove Format',
+      'Insert Special Character',
+      '',
+      'Paragraph Format',
+      'Formatting Styles',
+      'Bold',
+      'Italic',
+      'Insert/Remove Bulleted List',
+      'Insert/Remove Numbered List',
+      'Increase Indent',
+      'Decrease Indent',
+      'Superscript',
+      'Subscript',
+      'Block Quote',
+      'Insert Horizontal Line',
+      'Link',
+      'Unlink',
+      'Anchor',
+      'Table',
+      'IFrame',
+      'Add files and images'
+    ];
+    $buttons = $page->findAll('css', 'span.cke_toolbox a');
+    foreach ($buttons as $delta => $button) {
+      Assert::assertArrayHasKey($delta, $expectations);
+      Assert::assertEquals($expectations[$delta], $button->getAttribute('title'));
+    }
+  }
 
-
-  /*
-   * Miscellaneous
+  /**
+   * Misc
    *
    */
+
+  /**
+   * @Then I wait for text :text to :appear
+   */
+  public function iWaitForText($text, $appear = 'appear') {
+    $this->waitForXpathNode(".//*[contains(normalize-space(string(text())), \"$text\")]", $appear == 'appear');
+  }
+
+  /**
+   * @Then I wait for css element :element to :appear
+   */
+  public function iWaitForCssElement($element, $appear = 'appear') {
+    $xpath = $this->getSession()
+      ->getSelectorsHandler()
+      ->selectorToXpath('css', $element);
+    $this->waitForXpathNode($xpath, $appear == 'appear');
+  }
+
+  /**
+   * Helper function; Execute a function until it return TRUE or timeouts.
+   *
+   * @param $fn
+   *   A callable to invoke.
+   * @param int $timeout
+   *   The timeout period. Defaults to 10 seconds.
+   *
+   * @throws Exception
+   */
+  private function waitFor($fn, $timeout = 10000) {
+    $start = microtime(TRUE);
+    $end = $start + $timeout / 1000.0;
+    while (microtime(TRUE) < $end) {
+      if ($fn($this)) {
+        return;
+      }
+    }
+    throw new \Exception('waitFor timed out.');
+  }
+
+  /**
+   * Wait for an element by its XPath to appear or disappear.
+   *
+   * @param string $xpath
+   *   The XPath string.
+   * @param bool $appear
+   *   Determine if element should appear. Defaults to TRUE.
+   *
+   * @throws Exception
+   */
+  private function waitForXpathNode($xpath, $appear = TRUE) {
+    $this->waitFor(function ($context) use ($xpath, $appear) {
+      try {
+        $nodes = $context->getSession()->getDriver()->find($xpath);
+        if (count($nodes) > 0) {
+          $visible = $nodes[0]->isVisible();
+          return $appear ? $visible : !$visible;
+        }
+        return !$appear;
+      } catch (WebDriverException $e) {
+        if ($e->getCode() == WebDriverException::NO_SUCH_ELEMENT) {
+          return !$appear;
+        }
+        throw $e;
+      }
+    });
+  }
 
   /**
    * @Given /^I wait for (\d+) seconds$/
