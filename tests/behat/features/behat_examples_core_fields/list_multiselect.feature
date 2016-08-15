@@ -1,6 +1,6 @@
 Feature: Create boolean field test
 
-  @api @content @javascript @list_multiselect @core
+  @api @content  @list_multiselect @core
   Scenario: As an Administrator I want make sure the list field is working and allows multiple values
     Given I am logged in as a user with the "administrator" role
     When I visit "node/add/list"
@@ -15,7 +15,7 @@ Feature: Create boolean field test
     And I should see "Green"
 
   # Below is a similar test using the Drupal API Drive
-  @api @content @javascript @list_multiselect @core
+  @api @content  @list_multiselect @core
   Scenario: Create nodes with multiselect list fields
     # The Drupal API allows us to create content using 'Given "content_type" content
     # and to fill in the values of fields using Gherkin

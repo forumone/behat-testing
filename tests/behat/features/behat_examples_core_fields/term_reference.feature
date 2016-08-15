@@ -1,6 +1,6 @@
 Feature: Create boolean field test
 
-  @api @content @javascript @term @core
+  @api @content  @term @core
   Scenario: As an Administrator I want make sure the term reference value field is working
     Given I am logged in as a user with the "administrator" role
     When I visit "node/add/term-reference"
@@ -13,7 +13,7 @@ Feature: Create boolean field test
     And I should see "Wizbam"
 
   # Below is a similar test using the Drupal API Drive
-  @api @content @javascript @term @core
+  @api @content  @term @core
   Scenario: Create nodes with fields
     # The Drupal API allows us to create content using 'Given "content_type" content
     # and to fill in the values of fields using Gherkin

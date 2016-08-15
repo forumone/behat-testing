@@ -1,6 +1,6 @@
 Feature: Create boolean field test
 
-  @api @content @javascript @text @core
+  @api @content  @text @core
   Scenario: As an Administrator I want make sure the text value field is working
     Given I am logged in as a user with the "administrator" role
     When I visit "node/add/text"
@@ -13,7 +13,7 @@ Feature: Create boolean field test
     And I should see "Lorem ipsum dolor sit amet."
 
   # Below is a similar test using the Drupal API Drive
-  @api @content @javascript @text @core
+  @api @content  @text @core
   Scenario: Create nodes with text fields
     # The Drupal API allows us to create content using 'Given "content_type" content
     # and to fill in the values of fields using Gherkin

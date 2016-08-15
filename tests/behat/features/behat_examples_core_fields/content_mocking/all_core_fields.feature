@@ -1,6 +1,6 @@
 Feature: Basic Behat 3 Node Content Mocking Create Feature
 
-  @api @content @javascript @creation
+  @api @content  @creation
   Scenario: As an Administration user I want to create two test pages of content
     Given "Tags" terms:
       | name  |
@@ -17,7 +17,7 @@ Feature: Basic Behat 3 Node Content Mocking Create Feature
     Then I iterate through terms created and check that fields are correct
     Then I iterate through nodes created and check that fields are correct
 
-  @api @content @javascript @creation
+  @api @content  @creation
   Scenario: As an Administration user I want to create two test users
     Given users:
       | name  | mail          |

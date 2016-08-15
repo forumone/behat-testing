@@ -1,6 +1,6 @@
 Feature: Create boolean field test
 
-  @api @content @javascript @integer @core
+  @api @content  @integer @core
   Scenario: As an Administrator I want make sure the integer value field is working
     Given I am logged in as a user with the "administrator" role
     When I visit "node/add/integer"
@@ -13,7 +13,7 @@ Feature: Create boolean field test
     And I should see "123456"
 
   # Below is a similar test using the Drupal API Drive
-  @api @content @javascript @integer @core
+  @api @content  @integer @core
   Scenario: Create nodes with integer fields
     # The Drupal API allows us to create content using 'Given "content_type" content
     # and to fill in the values of fields using Gherkin
