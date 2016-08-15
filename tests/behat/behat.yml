@@ -39,6 +39,8 @@ default:
               alias: 'behat.local'
             drupal:
               drupal_root: '/vagrant/public'
+            region_map:
+              footer: "#footer"
 vm-selenium:
     formatters:
         pretty: true
@@ -76,6 +78,8 @@ vm-selenium:
               alias: 'behat.local'
             drupal:
               drupal_root: '/vagrant/public'
+            region_map:
+              footer: "#footer"
 
 local-phantomjs:
     formatters:
@@ -111,9 +115,10 @@ local-phantomjs:
                 login_form_selector: "form#user-login"
             api_driver: 'drush'
             drush:
-              alias: 'dai-usaid.guest'
+              alias: 'behat-testing'
               drupal_root: '/vagrant/public'
-
+            region_map:
+              footer: "#footer"
 local-selenium:
     formatters:
         pretty: true
@@ -150,5 +155,7 @@ local-selenium:
                 login_form_selector: "form#user-login"
             api_driver: 'drush'
             drush:
-              alias: 'dai-usaid.guest'
+              alias: 'behat-testing'
               drupal_root: '/vagrant/public'
+            region_map:
+              footer: "#footer"
