@@ -1,6 +1,6 @@
 Feature: Create boolean field test
 
-  @api @content @javascript @longtext_summary @core
+  @api @content @longtext_summary @core
   Scenario: As an Administrator I want make sure the longtext with summary field is working
     Given I am logged in as a user with the "administrator" role
     When I visit "node/add/longtext-with-summary"
@@ -21,7 +21,7 @@ Feature: Create boolean field test
     And I should not see "Morbi mollis accumsan ante. Morbi vel ornare nisl, quis posuere justo. Cras fringilla eu tortor a tristique. Maecenas vitae commodo ipsum, vitae dignissim augue."
 
   # Below is a similar test using the Drupal API Drive
-  @api @content @javascript @longtext_summary @core
+  @api @content @longtext_summary @core
   Scenario: Create nodes with multiselect list fields
     # The Drupal API allows us to create content using 'Given "content_type" content
     # and to fill in the values of fields using Gherkin

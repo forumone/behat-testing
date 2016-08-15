@@ -1,7 +1,7 @@
-Feature: Create DOM Element test
+Feature: DOM elements test
 
-  @api @content @javascript @dom_elements @core
-  Scenario: As an Administrator I want make sure the longtext value field is working
+  @api @content @javascript @dom_element @core
+  Scenario: As an content author, I want to add properly styled text in the 'Longtext' field
     Given I am logged in as a user with the "administrator" role
     When I visit "node/add/longtext"
     Then for "Title" I enter "Testing DOM Element"
