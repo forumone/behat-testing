@@ -1,6 +1,6 @@
 {
     "require-dev": {
-        "behat/behat": "~3.0.4",
+        "behat/behat": "~3.1.0",
         "behat/mink": "^1.7",
         "behat/mink-goutte-driver": "^1.2",
         "behat/mink-selenium2-driver": "^1.3",
@@ -16,8 +16,8 @@
     },
     "extra": {
         "patches": {
-            "drupal/drupal-extension": {
-                "Fix login check functionality": "patches/drupal-extension-login.patch"
+            "behat/behat": {
+                "Fix to xml filename default": "patches/behat_xml_filename.patch"
             }
         }
     }
