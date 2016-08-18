@@ -12,8 +12,7 @@ class F1ContentUtilityContext extends F1FundamentalContext implements SnippetAcc
 
   public function __construct() {
   }
-
-
+  
   /**
    * Handle Content Mocked content
    *
@@ -95,7 +94,6 @@ class F1ContentUtilityContext extends F1FundamentalContext implements SnippetAcc
       }
     }
   }
-
 
   public function getFieldSelectedValues($field, $cardinality) {
     //Try to grab a single cardinality field

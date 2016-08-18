@@ -8,6 +8,7 @@ dev:
             - F1ContentUtilityContext
             - F1FundamentalContext
             - F1DrushUtilityContext
+            - F1OGContext
             - Drupal\DrupalExtension\Context\DrupalContext
             - Drupal\DrupalExtension\Context\MinkContext
             - Drupal\DrupalExtension\Context\MessageContext
@@ -16,7 +17,7 @@ dev:
             - Behat\MinkExtension\Context\RawMinkContext
     extensions:
         Behat\MinkExtension:
-            base_url: http://forumone:f1dev@stage.{{ host }}.byf1.io/
+            base_url: http://forumone:f1dev@dev.{{ host }}.byf1.io/
             goutte: ~
             selenium2:
               browser:              'phantomjs'
@@ -48,6 +49,7 @@ stage:
             - F1ContentUtilityContext
             - F1FundamentalContext
             - F1DrushUtilityContext
+            - F1OGContext
             - Drupal\DrupalExtension\Context\DrupalContext
             - Drupal\DrupalExtension\Context\MinkContext
             - Drupal\DrupalExtension\Context\MessageContext

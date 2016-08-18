@@ -8,6 +8,7 @@ default:
             - F1ContentUtilityContext
             - F1FundamentalContext
             - F1DrushUtilityContext
+            - F1OGContext
             - Drupal\DrupalExtension\Context\DrupalContext
             - Drupal\DrupalExtension\Context\MinkContext
             - Drupal\DrupalExtension\Context\MessageContext
@@ -49,6 +50,7 @@ vm-selenium:
             - F1ContentUtilityContext
             - F1FundamentalContext
             - F1DrushUtilityContext
+            - F1OGContext
             - Drupal\DrupalExtension\Context\DrupalContext
             - Drupal\DrupalExtension\Context\MinkContext
             - Drupal\DrupalExtension\Context\MessageContext
@@ -91,6 +93,7 @@ local-phantomjs:
             - F1ContentUtilityContext
             - F1FundamentalContext
             - F1DrushUtilityContext
+            - F1OGContext
             - Drupal\DrupalExtension\Context\DrupalContext
             - Drupal\DrupalExtension\Context\MinkContext
             - Drupal\DrupalExtension\Context\MessageContext
@@ -132,6 +135,7 @@ local-selenium:
             - F1ContentUtilityContext
             - F1FundamentalContext
             - F1DrushUtilityContext
+            - F1OGContext
             - Drupal\DrupalExtension\Context\DrupalContext
             - Drupal\DrupalExtension\Context\MinkContext
             - Drupal\DrupalExtension\Context\MessageContext

@@ -8,6 +8,7 @@ sauce-dev:
             - F1ContentUtilityContext
             - F1FundamentalContext
             - F1DrushUtilityContext
+            - F1OGContext
             - Drupal\DrupalExtension\Context\DrupalContext
             - Drupal\DrupalExtension\Context\MinkContext
             - Drupal\DrupalExtension\Context\MessageContext
@@ -50,6 +51,7 @@ sauce-stage:
             - F1ContentUtilityContext
             - F1FundamentalContext
             - F1DrushUtilityContext
+            - F1OGContext
             - Drupal\DrupalExtension\Context\DrupalContext
             - Drupal\DrupalExtension\Context\MinkContext
             - Drupal\DrupalExtension\Context\MessageContext
