@@ -142,14 +142,14 @@ Web Starter by default comes with two behat-grunt tasks:
  ```
  $ vagrant ssh
  $ cd /vagrant/tests/behat/
- $ java -jar selenium-server-standalone-2.48.2.jar -role hub  -nodeConfig nodeconfig.server.json
+ $ java -jar selenium-server-standalone-{{ version }}.jar -role hub  -nodeConfig nodeconfig.server.json
  ```
 
  6. Use the following command to bring up the Selenium Hub on the Host
 
  ```
  $ cd tests/behat
- $ java -jar selenium-server-standalone-2.48.2.jar -role node  -nodeConfig nodeconfig.mac.json
+ $ java -jar selenium-server-standalone-{{ version }}.jar -role node  -nodeConfig nodeconfig.mac.json
  ```
 
  7. You can now run behat with Selenium Grid 2 on the Guest VM which will request Browsers from the Host
@@ -157,8 +157,12 @@ Web Starter by default comes with two behat-grunt tasks:
  ```
  $ vagrant ssh
  $ cd /vagrant/tests/behat
- $ bin/behat features/test-js.feature  -p local-selenium
+ $ bin/behat features/test-js.feature  -p vm-selenium
  ```
+
+### Troubleshooting for Selenium:
+1. Make sure that the hub/node can communicate with each other
+2. Disable firewalls to make sure that communication isn't impedded
 
 
 ## Optional PhpStorm Integration
