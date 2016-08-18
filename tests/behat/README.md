@@ -29,6 +29,20 @@ You should see output including the scenario and steps passed.
 (For the other default test included in this quick-start, see the Selenium instructions below.)
 
 
+## Upgrading Latest Webstarter Behat Changes
+
+In the event that you want to pull the latest Webstarter changes for Behat into an existing repo these files will be overridden
+* features/bootstrap/F1ContentUtilityContext.php
+* features/bootstrap/F1DrushUtilityContext.php
+* features/bootstrap/F1FundamentalContext.php
+
+The purpose of these custom context class files is to make different custom steps for .feature files and custom methods available to the F1 team, hence why we expect to overwrite them on occasion
+
+In order to avoid overriding existing project changed files all yml and selenium json files will be available as '.example' files in the 'examples' folder.
+
+If you want to reintegrate upstream changes to these files you can choose to copy the '.example' files over and overwrite or manually merge the changes in
+
+
 ## Usage
 
 The behat.yml file comes with two default profiles, 'default' and 'selenium'.
