@@ -173,7 +173,13 @@ Web Starter by default comes with two behat-grunt tasks:
  $ cd /vagrant/tests/behat
  $ bin/behat features/test-js.feature  -p vm-selenium
  ```
-
+ 8. Chromedriver (optional). In order to run Chrome we need to start up the Chromedriver from the Host Machine
+ ```
+ $ cd tests/behat
+ $ ./chromedriver
+ ```
+ 
+ 
 ### Troubleshooting for Selenium:
 1. Make sure that the hub/node can communicate with each other
 2. Disable firewalls to make sure that communication isn't impedded
