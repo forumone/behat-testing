@@ -1,4 +1,4 @@
-dev:
+sauce-dev:
     formatters:
         pretty: true
     suites:
@@ -16,14 +16,14 @@ dev:
             - Behat\MinkExtension\Context\RawMinkContext
             - Behat\MinkExtension\Context\RawMinkContext
     extensions:
-        Behat\MinkExtension:
+        Behat\MinkExtension\Extension:
             base_url: http://forumone:f1dev@dev.{{ host }}.byf1.io/
             goutte: ~
             selenium2:
-              browser:              'phantomjs'
-              wd_host:              'http://127.0.0.1:8643/wd/hub'
-            browser_name: 'phantomjs'
-            files_path: '/vagrant/tests/behat/files/'
+              browser: chrome
+              wd_host: {{ user }}:{{ access_key }}@ondemand.saucelabs.com/wd/hub
+              capabilities: { platform:OS X 10.10, version: 47}
+            files_path: 'tests/behat/files/'
         Drupal\DrupalExtension:
             blackbox: ~
             text:
@@ -36,10 +36,12 @@ dev:
                 login_form_selector: "form#user-login"
             api_driver: 'drupal'
             drush:
+#              binary: '/usr/local/bin/drush'
               alias: '{{ alias }}'
+#              global_options: '--alias-path="."'
             drupal:
               drupal_root: '/vagrant/public'
-stage:
+sauce-stage:
     formatters:
         pretty: true
     suites:
@@ -57,14 +59,14 @@ stage:
             - Behat\MinkExtension\Context\RawMinkContext
             - Behat\MinkExtension\Context\RawMinkContext
     extensions:
-        Behat\MinkExtension:
+        Behat\MinkExtension\Extension:
             base_url: http://forumone:f1dev@stage.{{ host }}.byf1.io/
             goutte: ~
             selenium2:
-              browser:              'phantomjs'
-              wd_host:              'http://127.0.0.1:8643/wd/hub'
-            browser_name: 'phantomjs'
-            files_path: '/vagrant/tests/behat/files/'
+              browser: chrome
+              wd_host: {{ user }}:{{ access_key }}@ondemand.saucelabs.com/wd/hub
+              capabilities: { platform:OS X 10.10, version: 47}
+            files_path: 'tests/behat/files/'
         Drupal\DrupalExtension:
             blackbox: ~
             text:
@@ -77,6 +79,8 @@ stage:
                 login_form_selector: "form#user-login"
             api_driver: 'drupal'
             drush:
+#              binary: '/usr/local/bin/drush'
               alias: '{{ alias }}'
+#              global_options: '--alias-path="."'
             drupal:
               drupal_root: '/vagrant/public'

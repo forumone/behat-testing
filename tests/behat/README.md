@@ -29,6 +29,20 @@ You should see output including the scenario and steps passed.
 (For the other default test included in this quick-start, see the Selenium instructions below.)
 
 
+## Upgrading Latest Webstarter Behat Changes
+
+In the event that you want to pull the latest Webstarter changes for Behat into an existing repo these files will be overridden
+* features/bootstrap/F1ContentUtilityContext.php
+* features/bootstrap/F1DrushUtilityContext.php
+* features/bootstrap/F1FundamentalContext.php
+
+The purpose of these custom context class files is to make different custom steps for .feature files and custom methods available to the F1 team, hence why we expect to overwrite them on occasion
+
+In order to avoid overriding existing project changed files all yml and selenium json files will be available as '.example' files in the 'examples' folder.
+
+If you want to reintegrate upstream changes to these files you can choose to copy the '.example' files over and overwrite or manually merge the changes in
+
+
 ## Usage
 
 The behat.yml file comes with two default profiles, 'default' and 'selenium'.
@@ -142,14 +156,14 @@ Web Starter by default comes with two behat-grunt tasks:
  ```
  $ vagrant ssh
  $ cd /vagrant/tests/behat/
- $ java -jar selenium-server-standalone-2.48.2.jar -role hub  -nodeConfig nodeconfig.server.json
+ $ java -jar selenium-server-standalone-{{ version }}.jar -role hub  -nodeConfig nodeconfig.server.json
  ```
 
  6. Use the following command to bring up the Selenium Hub on the Host
 
  ```
  $ cd tests/behat
- $ java -jar selenium-server-standalone-2.48.2.jar -role node  -nodeConfig nodeconfig.mac.json
+ $ java -jar selenium-server-standalone-{{ version }}.jar -role node  -nodeConfig nodeconfig.mac.json
  ```
 
  7. You can now run behat with Selenium Grid 2 on the Guest VM which will request Browsers from the Host
@@ -157,8 +171,18 @@ Web Starter by default comes with two behat-grunt tasks:
  ```
  $ vagrant ssh
  $ cd /vagrant/tests/behat
- $ bin/behat features/test-js.feature  -p local-selenium
+ $ bin/behat features/test-js.feature  -p vm-selenium
  ```
+ 8. Chromedriver (optional). In order to run Chrome we need to start up the Chromedriver from the Host Machine
+ ```
+ $ cd tests/behat
+ $ ./chromedriver
+ ```
+ 
+ 
+### Troubleshooting for Selenium:
+1. Make sure that the hub/node can communicate with each other
+2. Disable firewalls to make sure that communication isn't impedded
 
 
 ## Optional PhpStorm Integration
