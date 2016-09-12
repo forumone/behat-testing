@@ -1,10 +1,8 @@
 Feature: Create a Views test
 
-  @api @content @view
+  @api @content @view @regions @footer-region
 
-  Scenario: Check the Footer
+  Scenario: Check the footer region for 'Powered by Drupal'
     Given I am at "/"
-    And I press "Search" in the "header" region
-  I fill in "a value" for "a field" in the "content" region
-  I fill in "a field" with "Stuff" in the "header" region
-  I click "About us" in the "footer" region
+    #This step assumes that you have an out-of-the-box Drupal site with the 'Powered by Drupal' block assigned to the footer
+    Then I should see "Powered by Drupal" in the "footer" region
