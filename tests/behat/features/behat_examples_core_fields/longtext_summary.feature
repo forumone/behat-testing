@@ -25,7 +25,7 @@ Feature: Create boolean field test
   Scenario: Create nodes with multiselect list fields
     # The Drupal API allows us to create content using 'Given "content_type" content
     # and to fill in the values of fields using Gherkin
-    Given "list" content:
+    Given "longtext" content:
       | title                                   | longtext                 |  summary |
       | Testing Longtext and Summary with Drupal API Driver | Morbi mollis accumsan ante. Morbi vel ornare nisl, quis posuere justo. Cras fringilla eu tortor a tristique. Maecenas vitae commodo ipsum, vitae dignissim augue. | Morbi mollis |
 

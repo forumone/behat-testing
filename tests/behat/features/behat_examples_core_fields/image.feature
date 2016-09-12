@@ -19,7 +19,7 @@ Feature: Create boolean field test
     #todo This is still failing
     And I should see an "img" element
 
-  # Below is a similar test using the Drupal API Drive
+  # The test below utilizes the Drupal API Driver to generate a 'file' node
   @api @content @javascript @image @core
   Scenario: Create nodes with fields
     # The Drupal API allows us to create content using 'Given "content_type" content

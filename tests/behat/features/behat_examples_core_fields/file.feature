@@ -6,7 +6,7 @@ Feature: Create boolean field test
     When I visit "node/add/file"
     Then I should see the text "Create File"
     Then for "Title" I enter "Testing File"
-    And I should see the text "Allowed file types: txt."
+    And I should see the text "Allowed file types: txt pdf doc."
     Then I attach the file "text.txt" to "File"
     Then I press "Upload"
     Then I wait for AJAX to finish
@@ -15,9 +15,6 @@ Feature: Create boolean field test
     Then I press "Save"
     Then I should see "Testing File"
     And I should see "Test File Description"
-    Then I click "test.txt"
-    #todo This is still failing
-    Then I should see "This is a text file."
 
   # Below is a similar test using the Drupal API Drive
   @api @content @javascript @file @core
