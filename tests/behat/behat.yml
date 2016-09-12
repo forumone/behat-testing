@@ -41,6 +41,9 @@ default:
             drupal:
               drupal_root: '/vagrant/public'
             region_map:
+              header: "#header"
+              content: "#content"
+              sidebar_first: "#sidebar-first"
               footer: "#footer"
 vm-selenium:
     formatters:
@@ -85,6 +88,9 @@ vm-selenium:
             drupal:
               drupal_root: '/vagrant/public'
             region_map:
+              header: "#header"
+              content: "#content"
+              sidebar_first: "#sidebar-first"
               footer: "#footer"
 
 local-phantomjs:
@@ -129,6 +135,9 @@ local-phantomjs:
               alias: 'behat-testing'
               drupal_root: '/vagrant/public'
             region_map:
+              header: "#header"
+              content: "#content"
+              sidebar_first: "#sidebar-first"
               footer: "#footer"
 local-selenium:
     formatters:
@@ -174,4 +183,7 @@ local-selenium:
               alias: 'behat-testing'
               drupal_root: '/vagrant/public'
             region_map:
+              header: "#header"
+              content: "#content"
+              sidebar_first: "#sidebar-first"
               footer: "#footer"
