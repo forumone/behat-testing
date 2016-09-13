@@ -9,7 +9,7 @@ Feature: Create boolean field test
     # Note the lowercase 's' in 'summary' - Behat is case sensitive so this is important
     # Behat can 'click' a link id|title|alt|text
     Then I click "Edit summary"
-    Then I should see "Hide Summary"
+    Then I should see "Hide summary"
     And I should see the text "Text format"
     Then for "Summary" I enter "A short, concise summary"
     Then for "Long Text" I enter "Morbi mollis accumsan ante. Morbi vel ornare nisl, quis posuere justo. Cras fringilla eu tortor a tristique. Maecenas vitae commodo ipsum, vitae dignissim augue."
