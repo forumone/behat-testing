@@ -171,14 +171,18 @@ Web Starter by default comes with six behat-grunt tasks:
 See: http://blog.jetbrains.com/phpstorm/2014/07/using-behat-in-phpstorm/
 
 ## XDEBUG Configuration with PhpStorm
-1. On the VM export the following global variables before executing your behat test:
+1. [Get the host machine's IP address from within the VM](http://stackoverflow.com/questions/19917148/tell-vagrant-the-ip-of-the-host-machine). Something like:
+```
+netstat -rn | awk '/^0\.0\.0\.0/ { print $2}'
+```
+2. On the VM export the following global variables before executing your behat test:
 ```
  export PHP_IDE_CONFIG="serverName=localhost" && export XDEBUG_CONFIG="idekey=PHPSTORM remote_host={{ host machine ip address }} remote_port=9000"
 ```
-2. Make sure that PhpStorm is listening for incoming Xdebug connection.
-3. The PhpStorm Remote Debug window should look like this: https://www.evernote.com/l/AFOIz6c6ZgZH95SMVORHE3PKqzXR3-fHl7MB/image.png
-4. The PhpStorm Remote Debug Server window should look like this: https://www.evernote.com/l/AFNq1AfZQjRJ_aWUZt3dsx4jCcjUoB0ldM4B/image.png
-5. The PhpStorm Xdebug settings window should look like this: https://www.evernote.com/l/AFNgeZ8wetNEGLbbN1UEhnPmRShsDhXpP9oB/image.png
+3. Make sure that PhpStorm is listening for incoming Xdebug connection.
+4. The PhpStorm Remote Debug window should look like this: https://www.evernote.com/l/AFOIz6c6ZgZH95SMVORHE3PKqzXR3-fHl7MB/image.png
+5. The PhpStorm Remote Debug Server window should look like this: https://www.evernote.com/l/AFNq1AfZQjRJ_aWUZt3dsx4jCcjUoB0ldM4B/image.png
+6. The PhpStorm Xdebug settings window should look like this: https://www.evernote.com/l/AFNgeZ8wetNEGLbbN1UEhnPmRShsDhXpP9oB/image.png
 
 ## Gotchas
 
