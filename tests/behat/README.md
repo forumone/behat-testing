@@ -129,7 +129,6 @@ Web Starter by default comes with six behat-grunt tasks:
 
 **Note** that the command `behatJenkinsDev` points to the dev environment and `behatJenkinsStage` points to the stage environment.
 
-
 ## Optional Selenium Grid 2 Profile Features
 
  1. Install Java for your Platform
