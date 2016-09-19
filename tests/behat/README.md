@@ -162,8 +162,8 @@ Web Starter by default comes with six behat-grunt tasks:
  $ ./chromedriver
  ```
 
-### Troubleshooting for Selenium:
-1. Make sure that the hub/node can communicate with each other.
+### Troubleshooting for Selenium
+1. Make sure that the hub/node can communicate with each other. [@todo: how?]
 2. Disable firewalls to make sure that communication isn't impeded.
 
 ## Optional PhpStorm Integration
