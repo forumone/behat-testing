@@ -100,17 +100,21 @@ Scenario: I want to be able to show how to include Javascript
 
 ## Behat-Grunt Plugin
 
-Web Starter includes the Behat-Grunt Plugin which can run multiple Behat tests and export the results to a JUNIT XML file
+Web Starter includes the Behat-Grunt Plugin which can run multiple Behat tests and export the results to a JUNIT XML file.
 
-Web Starter by default comes with two behat-grunt tasks:
+Web Starter by default comes with six behat-grunt tasks:
 
- 1. behatLocal which runs behat jobs against PhantomJS
- 2. behatLocalSelenium which runs behat jobs against the Selenium grid system
+ 1. ``behatLocal`` which runs Behat jobs against PhantomJS
+ 2. ``behatvmSelenium`` [@todo addme]
+ 3. ``behatLocalSelenium`` which runs behat jobs against the Selenium grid system
+ 4. ``behatlocalPhantomjs``  [@todo addme]
+ 5. ``behatJenkinsDev`` which runs Behat jobs against PhantomJS from our build server for a Dev site (see Jenkins Integration below)
+ 6. ``behatJenkinsStage`` which runs Behat jobs against PhantomJS from our build server for a Stage site (see Jenkins Integration below)
 
 ## Jenkins Integration
 
  1. Jenkins runs behat with the Behat-Grunt Plugin. Make sure that your Behat tests work wth the Behat-Grunt Plugin prior to pushing them up to Jenkins.
- 2. Customize the behat.jenkins.yml file point to your respective dev and staging urls.
+ 2. Customize the behat.remote.yml file point to your respective dev and staging urls. (See the {{ placeholders }} in that file.)
  3. Clone a Jenkins job and disable the triggers to build based on git push, so that Behat only runs when you manually trigger it.
  4. Select 'Add a build step' -> 'Execute Shell'
   * Add the text to the Execute Shell textbox
