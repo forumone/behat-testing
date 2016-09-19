@@ -20,8 +20,8 @@ Once Web Starter has been provisioned and you have created your Drupal site with
 ```
 $ vagrant ssh
 $ cd /vagrant/tests/behat
-$ /usr/local/bin/phantomjs --webdriver=8643 &
-$ bin/behat features/TESTS/test.feature
+$ /usr/local/bin/phantomjs --webdriver=8643 & # Start PhantomJS in the background on port 8643.
+$ bin/behat features/TESTS/test.feature # Run one of our test Behat features.
 ```
 
 You should see output including the scenario and steps passed.
