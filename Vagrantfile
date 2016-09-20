@@ -96,6 +96,10 @@ Vagrant.configure("2") do |config|
   # Override them to prevent cryptic errors about "line 8: -E: command not found"
   config.ssh.sudo_command = "sudo %c"
 
+  config.ssh.username = "vagrant"
+  config.ssh.password = "vagrant"
+  config.ssh.insert_key = false
+
   # Run any custom scripts before provisioning
   config.vm.provision :shell, :path => "puppet/shell/pre-provision.sh"
 

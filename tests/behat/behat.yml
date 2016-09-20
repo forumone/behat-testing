@@ -14,7 +14,6 @@ default:
             - Drupal\DrupalExtension\Context\MessageContext
             - Drupal\DrupalExtension\Context\DrushContext
             - Behat\MinkExtension\Context\RawMinkContext
-            - Behat\MinkExtension\Context\RawMinkContext
     extensions:
         Behat\MinkExtension:
             base_url: http://localhost/
@@ -55,7 +54,6 @@ vm-selenium:
             - Drupal\DrupalExtension\Context\MinkContext
             - Drupal\DrupalExtension\Context\MessageContext
             - Drupal\DrupalExtension\Context\DrushContext
-            - Behat\MinkExtension\Context\RawMinkContext
             - Behat\MinkExtension\Context\RawMinkContext
     extensions:
         Behat\MinkExtension:
@@ -99,7 +97,6 @@ local-phantomjs:
             - Drupal\DrupalExtension\Context\MessageContext
             - Drupal\DrupalExtension\Context\DrushContext
             - Behat\MinkExtension\Context\RawMinkContext
-            - Behat\MinkExtension\Context\RawMinkContext
     extensions:
         Behat\MinkExtension:
             base_url: http://localhost:8081/
@@ -140,7 +137,6 @@ local-selenium:
             - Drupal\DrupalExtension\Context\MinkContext
             - Drupal\DrupalExtension\Context\MessageContext
             - Drupal\DrupalExtension\Context\DrushContext
-            - Behat\MinkExtension\Context\RawMinkContext
             - Behat\MinkExtension\Context\RawMinkContext
     extensions:
         Behat\MinkExtension:

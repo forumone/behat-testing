@@ -24,3 +24,6 @@ Feature: Create boolean field test
     And I am logged in as a user with the "administrator" role
     When I visit "admin/content"
     Then I should see the text "Testing Boolean Drupal API Driver"
+    Given
+
+

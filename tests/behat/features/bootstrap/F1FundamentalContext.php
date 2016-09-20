@@ -53,9 +53,9 @@ class F1FundamentalContext extends FeatureContext implements SnippetAcceptingCon
       $this->getSession()->getDriver()->resizeWindow(1440, 900);
     }
 
-    $this->ogContext = $scope->getEnvironment()->getContext('F1FundamentalContext');
-    $this->ogContext = $scope->getEnvironment()->getContext('F1FundamentalContext');
+    $this->ogContext = $scope->getEnvironment()->getContext('F1ContentUtilityContext');
     $this->ogContext = $scope->getEnvironment()->getContext('F1DrushUtilityContext');
+    $this->ogContext = $scope->getEnvironment()->getContext('F1OGContext');
 
   }
 
