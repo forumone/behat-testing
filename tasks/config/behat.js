@@ -36,18 +36,6 @@ module.exports = function(grunt) {
                     }
                 }
             },
-            localPhantomJS : {
-                src : './tests/behat/features/***/**/*',
-                options : {
-                    config : './tests/behat/behat.yml',
-                    flags : '-p local-phantomjs',
-                    maxProcesses : 5,
-                    bin : './tests/behat/bin/behat',
-                    junit : {
-                        output_folder : 'tests/test_results/'
-                    }
-                }
-            },
             jenkinsDev : {
                 src : './tests/behat/features/***/**/*',
                 options : {

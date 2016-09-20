@@ -9,9 +9,6 @@ module.exports = function(grunt) {
     // Point to local Behat Selenium on Host Machine
     grunt.registerTask('behatLocalSelenium', [ 'behat:localSelenium' ]);
 
-    // Point to local Behat Phantomjs on Host Machine
-    grunt.registerTask('behatlocalPhantomjs', [ 'behat:behatlocalPhantomjs' ]);
-
     // Point to Jenkins Dev environment
     grunt.registerTask('behatJenkinsDev', [ 'behat:jenkinsDev' ]);
 

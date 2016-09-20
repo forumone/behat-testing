@@ -104,12 +104,11 @@ Web Starter includes the Behat-Grunt Plugin which can run multiple Behat tests a
 
 Web Starter by default comes with six behat-grunt tasks:
 
- 1. ``behatLocal`` which runs Behat jobs against PhantomJS
- 2. ``behatvmSelenium`` [@todo addme]
- 3. ``behatLocalSelenium`` which runs behat jobs against the Selenium grid system
- 4. ``behatlocalPhantomjs``  [@todo addme]
- 5. ``behatJenkinsDev`` which runs Behat jobs against PhantomJS from our build server for a Dev site (see Jenkins Integration below)
- 6. ``behatJenkinsStage`` which runs Behat jobs against PhantomJS from our build server for a Stage site (see Jenkins Integration below)
+ 1. ``behatLocal`` which runs Behat jobs against PhantomJS. Called
+ 2. ``behatvmSelenium`` which runs Behat jobs against Selenium. Called from Host machine
+ 3. ``behatLocalSelenium`` which runs Behat jobs against Selenium. Called from VM machine
+ 4. ``behatJenkinsDev`` which runs Behat jobs against PhantomJS from our build server for a Dev site (see Jenkins Integration below)
+ 5. ``behatJenkinsStage`` which runs Behat jobs against PhantomJS from our build server for a Stage site (see Jenkins Integration below)
 
 ## Jenkins Integration
 
@@ -129,7 +128,7 @@ Web Starter by default comes with six behat-grunt tasks:
 
 **Note** that the command `behatJenkinsDev` points to the dev environment and `behatJenkinsStage` points to the stage environment.
 
-## Optional Selenium Grid 2 Profile Features
+## Optional Selenium Functionality (Via Selenium Grid 2)
 
  1. Install Java for your Platform
   * Homebrew option: `brew cask install java` or https://java.com
@@ -164,6 +163,10 @@ Web Starter by default comes with six behat-grunt tasks:
 
 ### Troubleshooting for Selenium:
 1. Make sure that the hub/node can communicate with each other
+    a. The way to check this is to make sure that both parts of selenium grid can communicate
+    b. The nodeconfig.server.json is configured to be run from the vm
+    c. The nodeconfig.{environment}.json is configured to be run from the host
+    d. Make sure that the nodeconfig.{environment}.json has the correct host ip
 2. Disable firewalls to make sure that communication isn't impedded
 
 
