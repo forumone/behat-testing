@@ -169,6 +169,115 @@ Web Starter by default comes with six behat-grunt tasks:
     d. Make sure that the nodeconfig.{environment}.json has the correct host ip
 2. Disable firewalls to make sure that communication isn't impedded
 
+## Traversing Pages
+Mink, the browser controller/emulator we use with Behat, has an Element API that allows for manipulating and interacting with page elements.  It contains the powerful TraversalbelElement method which – not surprisingly – able to traverse the DOM by html elements.  Two important classes of the TraversableElement method are the DocumentElement instance and the NodeElement class.  The former represents the `<html>` node of the page and the latter is used to represent any element inside the page.
+
+The DocumentElement instance is accessible through the Session::getPage method:
+```
+$page = $session->getPage();
+```
+Elements have 2 main traversal methods: `ElementInterface::findAll` returns an array of NodeElement instances matching the provided selector inside the current element while `ElementInterface::find` returns the first match or null when there is none.
+
+**DOM Manipulation**
+
+The NodeElement class contains many methods for manipulating the DOM, a few examples include:
+- `NodeElement::click` and `NodeElement::press` methods let you click the links and press the buttons on the page
+- `NodeElement::check` and `NodeElement::uncheck` methods will check and uncheck a checkbox field 
+- `NodeElement::focus` and `NodeElement::blur` allows you to give and remove focus on an element
+-  **Drag’n’Drop** - allows you to drag and drop one element onto another:
+    ```
+    $drag = $page->find(…);
+    $target = $page->find(…);
+
+    $dragged->dragTo($target);
+    ```
+
+**Element Content and Text**
+
+The `Element` class provides access to the content of the elements.
+- `Element::getHtml` gets the inner HTML of the element, i.e. all the children of the element.
+- `Element::getOutterHtml` gets the outter HTML of the element, i.e. including the element itself.
+- `Element::getText` gets the text of the element.  This method will strip the tags and unprinted characters out of the response, including newlines.  So it’ll basically return the text that the user sees on the page.
+ 
+**Regular Expression text matching**
+
+Behat will look for a matching step definition by matching the text of the step against the regular expressions defined by each step definition.  In the following example:
+```
+Scenario: List 2 files in a directory with the -a option
+  Given I am in a directory "test"
+  And I have a file named "foo"
+  And I have a file named ".bar"
+  When I run "ls -a"
+  Then I should get:
+    """
+    .
+    ..
+    .bar
+    foo
+    """
+```
+The first step's deffinition would look like: 
+```
+/**
+ * @Given /^I am in a directory "([^"]*)"$/
+ */
+public function iAmInADirectory($dir)
+{
+    if (!file_exists($dir)) {
+        mkdir($dir);
+    }
+    chdir($dir);
+}
+```
+Where '@Given' is the keyword and the text after the keyword is the regular expression. All search patterns in the regular expression (e.g. `([^"]*)`) will become method arguments (`$dir`).
+
+Below is a list of all the predifind steps that use regular expressions:
+
+- Given `/^I` select `"([^"]*)" from "([^"]*)" chosen\.js select box$/`
+- Given `/^I` select `"([^"]*)" from "([^"]*)" chosen\.js autoselect box$/`
+- When `/^(?:|I )`press `"(?P<button>(?:[^"]|\\")*)"$/`
+- When `/^(?:|I )`follow `"(?P<link>(?:[^"]|\\")*)"$/`
+- When `/^(?:|I )`fill in `"(?P<field>(?:[^"]|\\")*)"` with `"(?P<value>(?:[^"]|\\")*)"$/`
+- When `/^(?:|I )`fill in `"(?P<field>(?:[^"]|\\")*)"` with`:$/`
+- When `/^(?:|I )`fill in `"(?P<value>(?:[^"]|\\")*)"` for `"(?P<field>(?:[^"]|\\")*)"$/`
+- When `/^(?:|I )`fill in the `following:$/`
+- When `/^(?:|I )`select `"(?P<option>(?:[^"]|\\")*)"` from `"(?P<select>(?:[^"]|\\")*)"$/`
+- When `/^(?:|I )`additionally select `"(?P<option>(?:[^"]|\\")*)"` from `"(?P<select>(?:[^"]|\\")*)"$/`
+- When `/^(?:|I )`check `"(?P<option>(?:[^"]|\\")*)"$/`
+- When `/^(?:|I )`uncheck `"(?P<option>(?:[^"]|\\")*)"$/`
+- When `/^(?:|I )`attach the file `"(?P<path>[^"]*)"` to `"(?P<field>(?:[^"]|\\")*)"$/`
+- Then `/^(?:|I )`should be on `"(?P<page>[^"]+)"$/`
+- Then `/^(?:|I )`should be on `(?:|the )homepage$/`
+- Then `/^the (?i)url(?-i)` should match `(?P<pattern>"(?:[^"]|\\")*")$/`
+- Then `/^the` response status code should be `(?P<code>\d+)$/`
+- Then `/^the` response status code should not be `(?P<code>\d+)$/`
+- Then `/^(?:|I )`should see `"(?P<text>(?:[^"]|\\")*)"$/`
+- Then `/^(?:|I )`should not see `"(?P<text>(?:[^"]|\\")*)"$/`
+- Then `/^(?:|I )`should see text matching `(?P<pattern>"(?:[^"]|\\")*")$/`
+- Then `/^(?:|I )`should not see text matching `(?P<pattern>"(?:[^"]|\\")*")$/`
+- Then `/^the` response should contain `"(?P<text>(?:[^"]|\\")*)"$/`
+- Then `/^the` response should not contain `"(?P<text>(?:[^"]|\\")*)"$/`
+- Then `/^(?:|I )`should see `"(?P<text>(?:[^"]|\\")*)"` in the `"(?P<element>[^"]*)" element$/`
+- Then `/^(?:|I )`should not see `"(?P<text>(?:[^"]|\\")*)"` in the `"(?P<element>[^"]*)" element$/`
+- Then `/^the "(?P<element>[^"]*)"` element should contain `"(?P<value>(?:[^"]|\\")*)"$/`
+- Then `/^the "(?P<element>[^"]*)" `element should not contain `"(?P<value>(?:[^"]|\\")*)"$/`
+- Then `/^(?:|I )`should see `an? "(?P<element>[^"]*)" element$/`
+- Then `/^(?:|I )`should not see `an? "(?P<element>[^"]*)" element$/`
+- Then `/^the "(?P<field>(?:[^"]|\\")*)"` field should contain `"(?P<value>(?:[^"]|\\")*)"$/`
+- Then `/^the "(?P<field>(?:[^"]|\\")*)"` field should not contain `"(?P<value>(?:[^"]|\\")*)"$/`
+- Then `/^(?:|I )`should see `(?P<num>\d+) "(?P<element>[^"]*)" elements?$/`
+- Then `/^the "(?P<checkbox>(?:[^"]|\\")*)"` checkbox should be `checked$/`
+- Then `/^the` checkbox `"(?P<checkbox>(?:[^"]|\\")*)" (?:is|should be) checked$/`
+- Then `/^the "(?P<checkbox>(?:[^"]|\\")*)"` checkbox should not be `checked$/`
+- Then `/^the` checkbox `"(?P<checkbox>(?:[^"]|\\")*)"` should `(?:be unchecked|not be checked)$/`
+- Then `/^the` checkbox `"(?P<checkbox>(?:[^"]|\\")*)"` is `(?:unchecked|not checked)$/`
+- Then `/^(?:|I )`should see `(?P<num>\d+) "(?P<element>[^"]*)" elements?$/`
+- Then `/^the "(?P<checkbox>(?:[^"]|\\")*)"` checkbox should be `checked$/`
+- Then `/^the` checkbox `"(?P<checkbox>(?:[^"]|\\")*)" (?:is|should be) checked$/`
+- Then `/^the "(?P<checkbox>(?:[^"]|\\")*)"` checkbox should not be `checked$/`
+
+A note about regular expressions and quoted strings:
+- `(?P<option>(?:[^"]|\\")*)` does not support single quotes 
 
 ## Optional PhpStorm Integration
 
