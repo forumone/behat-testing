@@ -297,6 +297,13 @@ See: http://blog.jetbrains.com/phpstorm/2014/07/using-behat-in-phpstorm/
  5. The PhpStorm Remote Debug Server window should look like this: https://www.evernote.com/l/AFNq1AfZQjRJ_aWUZt3dsx4jCcjUoB0ldM4B/image.png
  6. The PhpStorm Xdebug settings window should look like this: https://www.evernote.com/l/AFNgeZ8wetNEGLbbN1UEhnPmRShsDhXpP9oB/image.png
 
+## Optional PhantomJS Viewport Specifications
+ 1. Be aware that on line 53 in F1FundamentalContext.php there is a hardcoded value for the viewport size of the browser
+ 2. By default PhantomJS sets the viewport size to 480x800, however this causes Behat tests to fail when dom elements are not visible within that resolution size
+    a. Example: If a menu collapses with smaller resolution than that item will not be viewable when PhantomJS attempts to view it with the default resolution of  480x800. By setting the resolution to 900x1440 we will be able to see the menu
+ 3. Ideally in the future we will be able to set the resolution through the profile. This is hardcoded for now until a upstream or patch fix in the future
+ 4. By all means alter these hardcoded values as you see fit for your project
+    
 ## Gotchas
 
  1. Various Behat Drivers have specific browser functionality.
