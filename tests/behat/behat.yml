@@ -5,8 +5,8 @@ default:
         default:
           contexts:
             - FeatureContext
-            - F1ContentUtilityContext
             - F1FundamentalContext
+            - F1ContentUtilityContext
             - F1DrushUtilityContext
             - F1OGContext
             - Drupal\DrupalExtension\Context\DrupalContext
@@ -46,8 +46,8 @@ vm-selenium:
         default:
           contexts:
             - FeatureContext
-            - F1ContentUtilityContext
             - F1FundamentalContext
+            - F1ContentUtilityContext
             - F1DrushUtilityContext
             - F1OGContext
             - Drupal\DrupalExtension\Context\DrupalContext
@@ -88,8 +88,8 @@ local-phantomjs:
         default:
           contexts:
             - FeatureContext
-            - F1ContentUtilityContext
             - F1FundamentalContext
+            - F1ContentUtilityContext
             - F1DrushUtilityContext
             - F1OGContext
             - Drupal\DrupalExtension\Context\DrupalContext
@@ -129,8 +129,8 @@ local-selenium:
         default:
           contexts:
             - FeatureContext
-            - F1ContentUtilityContext
             - F1FundamentalContext
+            - F1ContentUtilityContext
             - F1DrushUtilityContext
             - F1OGContext
             - Drupal\DrupalExtension\Context\DrupalContext
