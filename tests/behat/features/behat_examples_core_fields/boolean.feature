@@ -3,7 +3,7 @@ Feature: Create boolean field test
   @api @content @boolean @core
   Scenario: As an Administrator I want make sure the boolean value field is working
     Given I am logged in as a user with the "administrator" role
-    When I visit "node/add/boolean"
+    When I visit "node/add/behat_boolean"
     Then I should see the text "Create Boolean"
     Then for "Title" I enter "Testing Boolean"
     Then I should see the text "Choose yes or no"
@@ -15,9 +15,9 @@ Feature: Create boolean field test
 #    Below is the same test using the Drupal API Drive
   @api @content @boolean @core
   Scenario: Create nodes with fields
-    # The Drupal API allows us to create content using 'Given "content_type" content
+    # The Drupal API allows us to create content using 'Given "behat_content_type" content
     # and to fill in the values of fields using Gherkin
-    Given "boolean" content:
+    Given "behat_boolean" content:
       | title                             | boolean |
       | Testing Boolean Drupal API Driver | yes     |
 

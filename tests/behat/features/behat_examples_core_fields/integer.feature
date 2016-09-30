@@ -3,7 +3,7 @@ Feature: Create boolean field test
   @api @content  @integer @core
   Scenario: As an Administrator I want make sure the integer value field is working
     Given I am logged in as a user with the "administrator" role
-    When I visit "node/add/integer"
+    When I visit "node/add/behat_integer"
     Then I should see the text "Create Integer"
     Then for "Title" I enter "Testing Integer"
     Then I should see the text "Add an integer value. The value should not contain a decimal."
@@ -15,9 +15,9 @@ Feature: Create boolean field test
   # Below is a similar test using the Drupal API Drive
   @api @content  @integer @core
   Scenario: Create nodes with integer fields
-    # The Drupal API allows us to create content using 'Given "content_type" content
+    # The Drupal API allows us to create content using 'Given "behat_content_type" content
     # and to fill in the values of fields using Gherkin
-    Given "integer" content:
+    Given "behat_integer" content:
       | title                                                     | integer | promote |
       | Test Page One Integer with Drupal API Driver              | 123456  | 0       |
       | Test Page Two Integer with Drupal API Driver              | 654321  | 0       |

@@ -10,9 +10,9 @@
 function behat_examples_core_fields_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-boolean-field_boolean'.
-  $field_instances['node-boolean-field_boolean'] = array(
-    'bundle' => 'boolean',
+  // Exported field_instance: 'node-behat_boolean-field_behat_boolean'.
+  $field_instances['node-behat_boolean-field_behat_boolean'] = array(
+    'bundle' => 'behat_boolean',
     'default_value' => array(
       0 => array(
         'value' => 0,
@@ -36,7 +36,7 @@ function behat_examples_core_fields_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_boolean',
+    'field_name' => 'field_behat_boolean',
     'label' => 'Boolean',
     'required' => 0,
     'settings' => array(
@@ -51,53 +51,9 @@ function behat_examples_core_fields_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-core_fields-body'.
-  $field_instances['node-core_fields-body'] = array(
-    'bundle' => 'core_fields',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 600,
-        ),
-        'type' => 'text_summary_or_trimmed',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'body',
-    'label' => 'Body',
-    'required' => FALSE,
-    'settings' => array(
-      'display_summary' => TRUE,
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 20,
-        'summary_rows' => 5,
-      ),
-      'type' => 'text_textarea_with_summary',
-      'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance: 'node-core_fields-field_boolean'.
-  $field_instances['node-core_fields-field_boolean'] = array(
-    'bundle' => 'core_fields',
+  // Exported field_instance: 'node-behat_core_fields-field_behat_boolean'.
+  $field_instances['node-behat_core_fields-field_behat_boolean'] = array(
+    'bundle' => 'behat_core_fields',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -117,7 +73,7 @@ function behat_examples_core_fields_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_boolean',
+    'field_name' => 'field_behat_boolean',
     'label' => 'Boolean',
     'required' => 0,
     'settings' => array(
@@ -132,9 +88,9 @@ function behat_examples_core_fields_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-core_fields-field_float'.
-  $field_instances['node-core_fields-field_float'] = array(
-    'bundle' => 'core_fields',
+  // Exported field_instance: 'node-behat_core_fields-field_behat_float'.
+  $field_instances['node-behat_core_fields-field_behat_float'] = array(
+    'bundle' => 'behat_core_fields',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -159,7 +115,7 @@ function behat_examples_core_fields_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_float',
+    'field_name' => 'field_behat_float',
     'label' => 'Float',
     'required' => 0,
     'settings' => array(
@@ -178,9 +134,9 @@ function behat_examples_core_fields_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-core_fields-field_image'.
-  $field_instances['node-core_fields-field_image'] = array(
-    'bundle' => 'core_fields',
+  // Exported field_instance: 'node-behat_core_fields-field_behat_image'.
+  $field_instances['node-behat_core_fields-field_behat_image'] = array(
+    'bundle' => 'behat_core_fields',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -202,7 +158,7 @@ function behat_examples_core_fields_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_image',
+    'field_name' => 'field_behat_image',
     'label' => 'Image',
     'required' => 0,
     'settings' => array(
@@ -228,9 +184,9 @@ function behat_examples_core_fields_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-core_fields-field_integer'.
-  $field_instances['node-core_fields-field_integer'] = array(
-    'bundle' => 'core_fields',
+  // Exported field_instance: 'node-behat_core_fields-field_behat_integer'.
+  $field_instances['node-behat_core_fields-field_behat_integer'] = array(
+    'bundle' => 'behat_core_fields',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -255,7 +211,7 @@ function behat_examples_core_fields_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_integer',
+    'field_name' => 'field_behat_integer',
     'label' => 'Integer',
     'required' => 0,
     'settings' => array(
@@ -274,9 +230,9 @@ function behat_examples_core_fields_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-core_fields-field_list_text'.
-  $field_instances['node-core_fields-field_list_text'] = array(
-    'bundle' => 'core_fields',
+  // Exported field_instance: 'node-behat_core_fields-field_behat_list_text'.
+  $field_instances['node-behat_core_fields-field_behat_list_text'] = array(
+    'bundle' => 'behat_core_fields',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -296,7 +252,7 @@ function behat_examples_core_fields_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_list_text',
+    'field_name' => 'field_behat_list_text',
     'label' => 'List',
     'required' => 0,
     'settings' => array(
@@ -311,9 +267,9 @@ function behat_examples_core_fields_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-core_fields-field_term_reference'.
-  $field_instances['node-core_fields-field_term_reference'] = array(
-    'bundle' => 'core_fields',
+  // Exported field_instance: 'node-behat_core_fields-field_behat_term_ref'.
+  $field_instances['node-behat_core_fields-field_behat_term_ref'] = array(
+    'bundle' => 'behat_core_fields',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -333,7 +289,7 @@ function behat_examples_core_fields_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_term_reference',
+    'field_name' => 'field_behat_term_ref',
     'label' => 'Term Reference',
     'required' => 0,
     'settings' => array(
@@ -351,9 +307,9 @@ function behat_examples_core_fields_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-core_fields-field_text'.
-  $field_instances['node-core_fields-field_text'] = array(
-    'bundle' => 'core_fields',
+  // Exported field_instance: 'node-behat_core_fields-field_behat_text'.
+  $field_instances['node-behat_core_fields-field_behat_text'] = array(
+    'bundle' => 'behat_core_fields',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -373,7 +329,7 @@ function behat_examples_core_fields_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_text',
+    'field_name' => 'field_behat_text',
     'label' => 'Text',
     'required' => 0,
     'settings' => array(
@@ -391,9 +347,9 @@ function behat_examples_core_fields_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-file-field_file'.
-  $field_instances['node-file-field_file'] = array(
-    'bundle' => 'file',
+  // Exported field_instance: 'node-behat_file-field_behat_file'.
+  $field_instances['node-behat_file-field_behat_file'] = array(
+    'bundle' => 'behat_file',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -412,7 +368,7 @@ function behat_examples_core_fields_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_file',
+    'field_name' => 'field_behat_file',
     'label' => 'File',
     'required' => 0,
     'settings' => array(
@@ -433,9 +389,9 @@ function behat_examples_core_fields_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-float-field_float'.
-  $field_instances['node-float-field_float'] = array(
-    'bundle' => 'float',
+  // Exported field_instance: 'node-behat_float-field_behat_float'.
+  $field_instances['node-behat_float-field_behat_float'] = array(
+    'bundle' => 'behat_float',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Add a numerical value with a decimal (e.g. 12.34)',
@@ -460,7 +416,7 @@ function behat_examples_core_fields_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_float',
+    'field_name' => 'field_behat_float',
     'label' => 'Float',
     'required' => 0,
     'settings' => array(
@@ -479,9 +435,9 @@ function behat_examples_core_fields_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-image-field_image'.
-  $field_instances['node-image-field_image'] = array(
-    'bundle' => 'image',
+  // Exported field_instance: 'node-behat_image-field_behat_image'.
+  $field_instances['node-behat_image-field_behat_image'] = array(
+    'bundle' => 'behat_image',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -503,7 +459,7 @@ function behat_examples_core_fields_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_image',
+    'field_name' => 'field_behat_image',
     'label' => 'Image',
     'required' => 0,
     'settings' => array(
@@ -529,9 +485,9 @@ function behat_examples_core_fields_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-integer-field_integer'.
-  $field_instances['node-integer-field_integer'] = array(
-    'bundle' => 'integer',
+  // Exported field_instance: 'node-behat_integer-field_behat_integer'.
+  $field_instances['node-behat_integer-field_behat_integer'] = array(
+    'bundle' => 'behat_integer',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -556,7 +512,7 @@ function behat_examples_core_fields_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_integer',
+    'field_name' => 'field_behat_integer',
     'label' => 'Integer',
     'required' => 0,
     'settings' => array(
@@ -575,9 +531,9 @@ function behat_examples_core_fields_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-list-field_list_text'.
-  $field_instances['node-list-field_list_text'] = array(
-    'bundle' => 'list',
+  // Exported field_instance: 'node-behat_list-field_behat_list_text'.
+  $field_instances['node-behat_list-field_behat_list_text'] = array(
+    'bundle' => 'behat_list',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Select a color from the list.',
@@ -597,7 +553,7 @@ function behat_examples_core_fields_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_list_text',
+    'field_name' => 'field_behat_list_text',
     'label' => 'List',
     'required' => 0,
     'settings' => array(
@@ -612,50 +568,9 @@ function behat_examples_core_fields_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-longtext-field_long_text'.
-  $field_instances['node-longtext-field_long_text'] = array(
-    'bundle' => 'longtext',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_long_text',
-    'label' => 'Long Text',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => -4,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'node-longtext_with_summary-field_long_text_and_summary'.
-  $field_instances['node-longtext_with_summary-field_long_text_and_summary'] = array(
-    'bundle' => 'longtext_with_summary',
+  // Exported field_instance: 'node-behat_lng_txt_sum-field_behat_lng_txt_sum'.
+  $field_instances['node-behat_lng_txt_sum-field_behat_lng_txt_sum'] = array(
+    'bundle' => 'behat_lng_txt_sum',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -689,7 +604,7 @@ function behat_examples_core_fields_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_long_text_and_summary',
+    'field_name' => 'field_behat_lng_txt_sum',
     'label' => 'Long Text and Summary',
     'required' => 0,
     'settings' => array(
@@ -709,9 +624,49 @@ function behat_examples_core_fields_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-term_reference-field_term_reference'.
-  $field_instances['node-term_reference-field_term_reference'] = array(
-    'bundle' => 'term_reference',
+  // Exported field_instance: 'node-behat_longtext-field_behat_long_text'.
+  $field_instances['node-behat_longtext-field_behat_long_text'] = array(
+    'bundle' => 'behat_longtext',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_behat_long_text',
+    'label' => 'Long Text',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => -4,
+    ),
+  );
+
+  // Exported field_instance: 'node-behat_term_reference-field_behat_term_ref'.
+  $field_instances['node-behat_term_reference-field_behat_term_ref'] = array(
+    'bundle' => 'behat_term_reference',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Add a term',
@@ -731,7 +686,7 @@ function behat_examples_core_fields_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_term_reference',
+    'field_name' => 'field_behat_term_ref',
     'label' => 'Term Reference',
     'required' => 0,
     'settings' => array(
@@ -749,9 +704,9 @@ function behat_examples_core_fields_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-text-field_text'.
-  $field_instances['node-text-field_text'] = array(
-    'bundle' => 'text',
+  // Exported field_instance: 'node-behat_text-field_behat_text'.
+  $field_instances['node-behat_text-field_behat_text'] = array(
+    'bundle' => 'behat_text',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Fill out the text field above with text values',
@@ -771,7 +726,7 @@ function behat_examples_core_fields_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_text',
+    'field_name' => 'field_behat_text',
     'label' => 'Text',
     'required' => 0,
     'settings' => array(
@@ -793,7 +748,6 @@ function behat_examples_core_fields_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Add a numerical value with a decimal (e.g. 12.34)');
   t('Add a term');
-  t('Body');
   t('Boolean');
   t('Choose yes or no');
   t('File');

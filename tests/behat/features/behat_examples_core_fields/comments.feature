@@ -3,7 +3,7 @@ Feature: Create boolean field test
   @api @content  @comments @core
   Scenario: As an Administrator I want make sure the longtext value field is working
     Given I am logged in as a user with the "administrator" role
-    When I visit "node/add/longtext"
+    When I visit "node/add/behat_longtext"
     Then I should see the text "Create Long Text Field"
     Then for "Title" I enter "Testing Long Text"
     Then I should see the text "Text format"

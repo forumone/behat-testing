@@ -3,7 +3,7 @@ Feature: Create boolean field test
   @api @content @javascript @image @core
   Scenario: As an Administrator I want make sure the file field is working
     Given I am logged in as a user with the "administrator" role
-    When I visit "node/add/image"
+    When I visit "node/add/behat_image"
     Then I should see the text "Create Image"
     Then for "Title" I enter "Testing Image"
     Then I attach the file "beehat-drupalicon.png" to "Image"
@@ -22,9 +22,9 @@ Feature: Create boolean field test
   # The test below utilizes the Drupal API Driver to generate a 'file' node
   @api @content @javascript @image @core
   Scenario: Create nodes with fields
-    # The Drupal API allows us to create content using 'Given "content_type" content
+    # The Drupal API allows us to create content using 'Given "behat_content_type" content
     # and to fill in the values of fields using Gherkin
-    Given "file" content:
+    Given "behat_file" content:
       | title                               | image     |
       | Testing Image with Drupal API Driver | beehat-drupalicon.png |
 

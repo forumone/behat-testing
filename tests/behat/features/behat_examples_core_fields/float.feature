@@ -3,7 +3,7 @@ Feature: Create boolean field test
   @api @content  @float @core
   Scenario: As an Administrator I want make sure the float value field is working
     Given I am logged in as a user with the "administrator" role
-    When I visit "node/add/float"
+    When I visit "node/add/behat_float"
     Then I should see the text "Create Float Field"
     Then for "Title" I enter "Testing Float"
     Then I should see the text "Add a numerical value with a decimal"
@@ -17,9 +17,9 @@ Feature: Create boolean field test
     #    Below is a similar test using the Drupal API Drive
   @api @content  @float @core
   Scenario: Create nodes with fields
-    # The Drupal API allows us to create content using 'Given "content_type" content
+    # The Drupal API allows us to create content using 'Given "behat_content_type" content
     # and to fill in the values of fields using Gherkin
-    Given "float" content:
+    Given "behat_float" content:
       | title                           | float        |
       | Testing Float with Drupal API Driver | 145.67837892 |
 

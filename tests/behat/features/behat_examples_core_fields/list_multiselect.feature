@@ -3,7 +3,7 @@ Feature: Create boolean field test
   @api @content  @list_multiselect @core
   Scenario: As an Administrator I want make sure the list field is working and allows multiple values
     Given I am logged in as a user with the "administrator" role
-    When I visit "node/add/list"
+    When I visit "node/add/behat_list"
     Then I should see the text "Create List"
     Then for "Title" I enter "Testing List"
     Then I should see the text "Select a color from the list."
@@ -17,10 +17,10 @@ Feature: Create boolean field test
   # Below is a similar test using the Drupal API Drive
   @api @content  @list_multiselect @core
   Scenario: Create nodes with multiselect list fields
-    # The Drupal API allows us to create content using 'Given "content_type" content
+    # The Drupal API allows us to create content using 'Given "behat_content_type" content
     # and to fill in the values of fields using Gherkin
-    Given "list" content:
-      | title                                           | list       |
+    Given "behat_list" content:
+      | title                                                     | list       |
       | Testing Multiple Value Select List with Drupal API Driver | Red, Green |
 
     And I am logged in as a user with the "administrator" role

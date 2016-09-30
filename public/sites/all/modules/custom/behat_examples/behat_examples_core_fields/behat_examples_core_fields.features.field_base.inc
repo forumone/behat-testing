@@ -10,34 +10,13 @@
 function behat_examples_core_fields_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'body'.
-  $field_bases['body'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(
-      0 => 'node',
-    ),
-    'field_name' => 'body',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'text_with_summary',
-  );
-
-  // Exported field_base: 'field_boolean'.
-  $field_bases['field_boolean'] = array(
+  // Exported field_base: 'field_behat_boolean'.
+  $field_bases['field_behat_boolean'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_boolean',
+    'field_name' => 'field_behat_boolean',
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -56,13 +35,13 @@ function behat_examples_core_fields_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_file'.
-  $field_bases['field_file'] = array(
+  // Exported field_base: 'field_behat_file'.
+  $field_bases['field_behat_file'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_file',
+    'field_name' => 'field_behat_file',
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -79,13 +58,13 @@ function behat_examples_core_fields_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_float'.
-  $field_bases['field_float'] = array(
+  // Exported field_base: 'field_behat_float'.
+  $field_bases['field_behat_float'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_float',
+    'field_name' => 'field_behat_float',
     'indexes' => array(),
     'locked' => 0,
     'module' => 'number',
@@ -96,13 +75,13 @@ function behat_examples_core_fields_field_default_field_bases() {
     'type' => 'number_float',
   );
 
-  // Exported field_base: 'field_image'.
-  $field_bases['field_image'] = array(
+  // Exported field_base: 'field_behat_image'.
+  $field_bases['field_behat_image'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_image',
+    'field_name' => 'field_behat_image',
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -118,13 +97,13 @@ function behat_examples_core_fields_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_integer'.
-  $field_bases['field_integer'] = array(
+  // Exported field_base: 'field_behat_integer'.
+  $field_bases['field_behat_integer'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_integer',
+    'field_name' => 'field_behat_integer',
     'indexes' => array(),
     'locked' => 0,
     'module' => 'number',
@@ -133,13 +112,13 @@ function behat_examples_core_fields_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_list_text'.
-  $field_bases['field_list_text'] = array(
+  // Exported field_base: 'field_behat_list_text'.
+  $field_bases['field_behat_list_text'] = array(
     'active' => 1,
     'cardinality' => 3,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_list_text',
+    'field_name' => 'field_behat_list_text',
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -162,32 +141,13 @@ function behat_examples_core_fields_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_long_text'.
-  $field_bases['field_long_text'] = array(
+  // Exported field_base: 'field_behat_lng_txt_sum'.
+  $field_bases['field_behat_lng_txt_sum'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_long_text',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'text_long',
-  );
-
-  // Exported field_base: 'field_long_text_and_summary'.
-  $field_bases['field_long_text_and_summary'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_long_text_and_summary',
+    'field_name' => 'field_behat_lng_txt_sum',
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -200,13 +160,32 @@ function behat_examples_core_fields_field_default_field_bases() {
     'type' => 'text_with_summary',
   );
 
-  // Exported field_base: 'field_term_reference'.
-  $field_bases['field_term_reference'] = array(
+  // Exported field_base: 'field_behat_long_text'.
+  $field_bases['field_behat_long_text'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_behat_long_text',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_behat_term_ref'.
+  $field_bases['field_behat_term_ref'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_term_reference',
+    'field_name' => 'field_behat_term_ref',
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -226,13 +205,13 @@ function behat_examples_core_fields_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_text'.
-  $field_bases['field_text'] = array(
+  // Exported field_base: 'field_behat_text'.
+  $field_bases['field_behat_text'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_text',
+    'field_name' => 'field_behat_text',
     'indexes' => array(
       'format' => array(
         0 => 'format',

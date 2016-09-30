@@ -3,7 +3,7 @@ Feature: Create a core_fields test
   @api @javascript @content @boolean @all_core
   Scenario: As an Administrator I want make sure the boolean value field is working
     Given I am logged in as a user with the "administrator" role
-    When I visit "node/add/core-fields"
+    When I visit "node/add/behat_core-fields"
     Then I should see the text "Create Core Fields"
     Then for "Title" I enter "Testing Core Fields"
     Then I should see the text "Choose yes or no."
@@ -74,7 +74,7 @@ Feature: Create a core_fields test
   # be in the header row of the Gherkin table and the table must be preceded by 'Examples:'
   # http://docs.behat.org/en/v3.0/guides/1.gherkin.html
 
-    Given "Core Fields" content:
+    Given "behat_Core Fields" content:
       | title                               | field_boolean | field_text                  | field_list_text | field_integer | field_float  | field_long_text_and_summary                                                                                                                                       | field_term_reference | field_image           | field_file |
       | Testing Core Fields with Drupal API | Yes           | Lorem ipsum dolor sit amet. | Orange          | 123456        | 145.67837892 | Morbi mollis accumsan ante. Morbi vel ornare nisl, quis posuere justo. Cras fringilla eu tortor a tristique. Maecenas vitae commodo ipsum, vitae dignissim augue. | Wizbam               | beehat-drupalicon.png | text.txt   |
 

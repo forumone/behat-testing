@@ -3,7 +3,7 @@ Feature: Create boolean field test
   @api @content @javascript @file @core
   Scenario: As an Administrator I want make sure the file field is working
     Given I am logged in as a user with the "administrator" role
-    When I visit "node/add/file"
+    When I visit "node/add/behat_file"
     Then I should see the text "Create File"
     Then for "Title" I enter "Testing File"
     And I should see the text "Allowed file types: txt pdf doc."
@@ -19,9 +19,9 @@ Feature: Create boolean field test
   # Below is a similar test using the Drupal API Drive
   @api @content @javascript @file @core
   Scenario: Create nodes with fields
-    # The Drupal API allows us to create content using 'Given "content_type" content
+    # The Drupal API allows us to create content using 'Given "behat_content_type" content
     # and to fill in the values of fields using Gherkin
-    Given "file" content:
+    Given "behat_file" content:
       | title                               | file     |
       | Testing File with Drupal API Driver | test.txt |
 

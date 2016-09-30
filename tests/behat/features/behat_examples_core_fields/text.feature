@@ -3,7 +3,7 @@ Feature: Create boolean field test
   @api @content  @text @core
   Scenario: As an Administrator I want make sure the text value field is working
     Given I am logged in as a user with the "administrator" role
-    When I visit "node/add/text"
+    When I visit "node/add/behat_text"
     Then I should see the text "Create Text Field"
     Then for "Title" I enter "Testing Text"
     Then I should see the text "Fill out the text field above with text values"
@@ -15,11 +15,11 @@ Feature: Create boolean field test
   # Below is a similar test using the Drupal API Drive
   @api @content  @text @core
   Scenario: Create nodes with text fields
-    # The Drupal API allows us to create content using 'Given "content_type" content
+    # The Drupal API allows us to create content using 'Given "behat_content_type" content
     # and to fill in the values of fields using Gherkin
-    Given "term reference" content:
-      | title                                | text |
-      | Testing Text with Drupal API Driver | Lorem ipsum dolor sit amet.  |
+    Given "behat_text" content:
+      | title                               | text                        |
+      | Testing Text with Drupal API Driver | Lorem ipsum dolor sit amet. |
 
     And I am logged in as a user with the "administrator" role
     When I visit "admin/content"
