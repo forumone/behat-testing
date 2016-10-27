@@ -32,6 +32,9 @@ In the event that you want to pull the latest Webstarter changes for Behat into 
 * features/bootstrap/F1ContentUtilityContext.php
 * features/bootstrap/F1DrushUtilityContext.php
 * features/bootstrap/F1FundamentalContext.php
+* features/bootstrap/F1OGContext.php
+* tests/behat/features/TESTS
+* tests/behat/examples
 
 The purpose of these custom context class files is to make different custom steps for .feature files and custom methods available to the F1 team, hence why we expect to overwrite them on occasion.
 
@@ -278,6 +281,44 @@ Below is a list of all the predifind steps that use regular expressions:
 
 A note about regular expressions and quoted strings:
 - `(?P<option>(?:[^"]|\\")*)` does not support single quotes 
+
+## Behat Context Files
+
+In your folder you will notice this structure:
+
+```
+bootstrap
+    F1ContentUtilityContext.php
+    F1DrushUtilityContext.php
+    F1FundamentalContext.php
+    F1OGContext.php
+    FeatureContext.php
+```
+
+These files are provided by the Behat Generator for making your life a little easier. Behat not only allows for writing .feature tests but also 
+calling custom steps which in turn call custom methods within these files which can execute multiple steps or custom logic for running tests.
+These files should be self-explanatory: F1ContentUtilityContext is for utility functions, F1DrushUtilityContext is for testing via drush, 
+F1OGContext is for organic groups tests and the F1FundamentalContext context allows you to access all of the information 
+about mocked content created through drupal, such as the nid, etc etc. The FeatureContext file is strictly for your project's 
+custom methods which won't be overridden on a behat generator update.
+
+### Behat Context Customization
+
+Say that you are working on a function for your project that has been really helpful for doing a specific test. 
+Depending on if the test is written in a non-specific way it might be a great candidate for other Drupal projects.
+Here is the beauty of the F1 Behat program. You can create a Pull Request off of the Behat Generator repo to make sure that 
+the function you wrote gets incorporated back into the Behat Generator for others to use. 
+
+Example Function in F1ContentUtilityContext.php
+```
+function iVisitTheNode
+```
+
+If this function didn't exist in F1ContentUtilityContext.php, but you had created it in FeatureContext.php you would probably want to
+share it with other folks via the Behat Generator repo. 
+
+TODO: Provide link to repo, and an example PR
+
 
 ## Optional PhpStorm Integration
 
